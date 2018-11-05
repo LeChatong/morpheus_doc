@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Documentation Scolarité | Etudiants & Inscriptions{% endblock %}
+{% block breadcrumb %}
+    <b>
+        <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
+        <a style="color: #2a4e7f;" href="{% url 'sco_accueil' %}" class="breadcrumb">{{ 'Morpheus Scolarité'|upper }}</a>
+        <a style="color: #686868;"  href="#" class="disabled breadcrumb">{{ 'Gestion des étudiants & Inscription'|upper }}</a>
+    </b>
+
+{% endblock %}
+{% block body %}
+    {% load static %}
+    <div class="row">
+        <div class="col s3"></div>
+        <div class="col s9">
+            <h4><b style="color: #2a4e7f;">{{ 'GESTION DES ETUDIANTS ET DES INSCRIPTIONS'|upper }}</b></h4>
+            <p>Ce chapitre concerne la gestion des étudiants dans l’application : leur enregistrement, leur inscription, leur transfert, etc.</p>
+            <h5 id="c_etudiant"><b style="color: #686868;">{{ 'étudiant'|upper }}</b></h5>
+            <hr/>
+            <p>Cette partie concerne principalement la manipulation des étudiants à travers l’interface suivant.</p>
+            <img class="materialboxed responsive-img card" width="1206" height="618" style="border: 5px;" src="{% static 'img/sco-img/sco-etd-profil.png' %}">
+            <sup>Interface de Gestion des étudiants</sup>
+            <p>La zone de recherche (encadré en <b>noir</b>) permet de de faire la recherche d’un étudiant inscrit dans au moins une classe pour le compte de l’année académique sélectionné.<br/>
+                Après avoir choisi un étudiant, ses informations sont remplies dans la partie droite de l’écran en plusieurs onglets.
+            </p>
+            <h6><b>Informations Personnelles</b></h6>
+                <hr>
+            <p>Cette partie concerne les informations de l’étudiant en différent onglets, à savoir : Identité, Adresse, Origine, Physique (zone encadré en <span style="color: #c00000"><b>rouge</b></span>).<br/>
+                Comme vous pouvez le constater les champs sont grisé, le clic sur le bouton « <b><i>Déverrouiller / Verrouiller</i></b> » (Encadré en <span style="color: #2A4E7F;"><b>bleu</b></span>), permet de dégriser ou griser c’est champ là ainsi que le bouton « <b><i>Mettre à jour</i></b> » (encadré en <span style="color: #ffc000"><b>jaune</b></span>) qui permet d’enregistrer d’éventuelles modifications effectué sur l’étudiant.
+            </p>
+            <h6><b>Contact de l’étudiant</b></h6>
+                <hr>
+            <p>Cette partie permet d’enregistrer les emails et numéro de téléphone de l’étudiant.</p>
+
+            <img class="materialboxed responsive-img card" width="752" height="216" style="border: 5px;" src="{% static 'img/sco-img/sco-etd-contact.png' %}">
+            <sup>Numéros de téléphone et emails de l'étudiant</sup>
+            <p>Les boutons « <b>Nouveau</b> » permettent respectivement d’ajouter un nouveau numéro de téléphone ou un nouvel email à l’étudiant.</p>
+            <img class="materialboxed responsive-img card" width="216" height="157" style="border: 5px;" src="{% static 'img/sco-img/sco-etd-add-tel.png' %}">
+            <sup>Ajout d’un numéro de téléphone</sup>
+            <img class="materialboxed responsive-img card" width="216" height="159" style="border: 5px;" src="{% static 'img/sco-img/sco-etd-add-mail.png' %}">
+            <sup>Ajout d'un email</sup>
+
+            <h6><b>Informations Parentales</b></h6><hr/>
+            <p>Cette interface permet d’afficher les parents de l’étudiant choisi ainsi que d’avoir des informations (numéros de téléphone et emails) sur eux.</p>
+
+            <img class="materialboxed responsive-img card" width="754" height="318" style="border: 5px;" src="{% static 'img/sco-img/sco-etd-info-par.png' %}">
+            <sup>Parents de l'étudiant</sup>
+            <p>Le bouton " <b><i>Ajouter</i></b>", situé dans le bloc Parent permet attribuer un parent à l’étudiant. Grâce à l’interface suivante.</p>
+            <img class="materialboxed responsive-img card" width="723" height="408" style="border: 5px;" src="{% static 'img/sco-img/sco-etd-info-par+.png' %}">
+            <sup>Choix du Parent</sup>
+
+            <p>-	Le Lien « <b><i>Choisir</i></b> » : permet d’attribuer le parent à l’étudiant.<br/>
+            -	Les liens « <b><i>Editer</i></b> » et « <b><i>Supprimer</i></b> »  permettent respectivement d’éditer et supprimer  un parent.</p>
+            <p>Dans le cas où le parent n’existe pas, le bouton « <b><i>Nouveau Parent</i></b> » permet d’en ajouter un parent.</p>
+            <img class="materialboxed responsive-img card" width="214" height="258" style="border: 5px;" src="{% static 'img/sco-img/sco-etd-add-par.png' %}">
+            <sup>Edition d'un parent</sup>
+
+            <p>•	Le lien « <b><i>Choisir</i></b> » permet d’afficher les numéros de téléphone et l’email du parent et par conséquent l’ajout de ceux-ci.</p>
+            <p>•	Le lien « <b><i>Retirer</i></b> » permet tout simplement d’enlever le parent à l’étudiant.</p>
+
+        </div>
+    </div>
+
+    <div class="row">
+      <b>
+          <div class="col s4"><a href="{%   url 'sco_config_pension' %}">{{ '2. Approche Configuration du module'|upper }}</a></div>
+          <div class="col s4"><a style="color: #2A4E7F;" class="disabled">{{ '3. Gestion des étudiants & Inscription'|upper }}</a></div>
+          <div class="col s4"><a href="{%   url 'sco_config_pension' %}">{{ '4. '|upper }}</a></div>
+      </b>
+    </div>
+{% endblock %}

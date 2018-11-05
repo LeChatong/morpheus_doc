@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'css/materialize.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+    <link rel="SCHORCUT ICON" href="{% static 'img/scolarite.png' %}">
+    <title>{% block title %}MorpheusDocs | Acceuil{% endblock %}</title>
+</head>
+<body>
+<main>
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
+ <nav>
+    <div class="nav-wrapper navbar-fixed" style="background-color: #ffffff;">
+      <a href="#" class="brand-logo right"style="color: #2A4E7F;" >MorpheusDocs.</a>
+        <a href="#" class="brand-logo center"><img src="{% static 'img/logo-top.png' %}" /> </a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a style="color: #2A4E7F;" href="{% url 'morpheus_doc' %}">{{ 'Acceuil'|upper }}</a></li>
+        <li><a style="color: #2A4E7F;" class='dropdown-button' href='#!' data-activates='dropdown1'>{{ 'Modules'|upper }}</a></li>
+
+        <li><a style="color: #2A4E7F;" href="collapsible.html">{{ 'à propos'|upper }}</a></li>
+      </ul>
+    </div>
+  </nav>
+
+    <div class="container">
+        <div class="nav-wrapper">
+            <div class="col s12">
+                {% block breadcrumb %}
+                {% endblock %}
+            </div>
+        </div>
+
+
+        {% block body %}
+            <h3 class="text-darken-2" style="color: #2A4E7F;">MODULES</h3>
+            <div style="padding-left: 15px;">
+            <table class="highlight">
+                <tr>
+                    <td>
+                        <h4>
+                            <a href="{% url 'adm_acceuil' %}">
+                            <div class="waves-effect text-darken-3"  style="color: #2A4E7F; padding-right: 20px; padding-left: 5px;">
+                                <img style="height: 64px; width: 64px;" class="circle" src="{% static 'img/admission.png' %}">{{ 'MORPHEUS ADMISSION'|upper }}
+                            </div>
+                            </a>
+                        </h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>
+                            <a href="{% url 'sco_accueil' %}">
+                            <div class="waves-effect text-darken-3"  style="color: #2A4E7F; padding-right: 20px;padding-left: 5px;">
+                                <img style="height: 64px; width: 64px;" class="circle" src="{% static 'img/scolarite.png' %}">{{ 'MORPHEUS SCOLARITé'|upper }}
+                            </div>
+                            </a>
+                        </h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>
+                            <a href="{% url 'loc_acceuil' %}">
+                            <div class="waves-effect text-darken-3"  style="color: #2A4E7F; padding-right: 20px; padding-left: 5px; vertical-align: center;">
+                                <img style="height: 64px; width: 64px;" class="circle" src="{% static 'img/maison.png' %}">{{ 'MORPHEUS LOCATION'|upper }}
+                            </div>
+                            </a>
+                        </h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>
+                            <a href="{% url 'pai_acceuil' %}">
+                            <div class="waves-effect text-darken-3"  style="color: #2A4E7F; padding-right: 20px; padding-left: 5px; vertical-align: center;">
+                                <img style="height: 64px; width: 64px;" class="circle" src="{% static 'img/money.png' %}">{{ 'MORPHEUS PAIE'|upper }}
+                            </div>
+                            </a>
+                        </h4>
+                    </td>
+                </tr>
+            </table>
+
+
+
+            </div>
+
+        {% endblock %}
+    </div>
+<footer class="page-footer" style="background-color: #eaeaea;position: relative; bottom: 0; left: 0; right: 0;">
+    <div class="footer-copyright">
+        <div class="container center" style="color: #2A4E7F;">
+        © 2018 Copyright MOPRHEUS / SEED 2018
+        </div>
+    </div>
+</footer>
+
+</main>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</body>
+</html>

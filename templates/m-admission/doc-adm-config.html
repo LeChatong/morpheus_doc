@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Documentation Admission{% endblock %}
+{% block breadcrumb %}
+    <b>
+        <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
+        <a style="color: #686868;" href="{% url 'adm_acceuil' %}" class="breadcrumb">{{ 'Morpheus Admission'|upper }}</a>
+        <a style="color: #686868;"  href="#" class="disabled breadcrumb">{{ 'APPROCHE CONFIGURATION DU MODULE'|upper }}</a>
+    </b>
+{% endblock %}
+{% block body %}
+    {% load static %}
+    <div class="row">
+        <div class="col s3"></div>
+        <div style="text-align: justify"  class="col s9">
+            <h4><b style="color: #2a4e7f;">{{ 'APPROCHE CONFIGURATION DU MODULE'|upper }}</b></h4><hr/>
+            <p>Ce chapitre concerne les configurations, nous allons par la suite présenter dans les moindres détails comment utiliser cette partie.</p>
+            <h5 id=""><b style="color: #686868;">{{ 'CONFIGURATION CONCOURS'|upper }}</b></h5><hr/>
+            <p>Il s’agit ici des configurations permettant la création des concours et de l’affection des spécialités aux concours par niveau et option. </p>
+            <img class="materialboxed responsive-img card" width="1884" height="961" style="border: 5px;" src="{% static 'img/adm-img/adm-config-concours.png' %}">
+            <sup>Interface de Configuration de Concours</sup>
+            <h6 id=""><b>(1)	Création d’un concours</b></h6>
+            <img class="materialboxed responsive-img card" width="280" height="255" style="border: 5px;" src="{% static 'img/adm-img/adm-config-edit-concours.png' %}">
+            <sup>Fenêtre d'édition d'un Concours</sup>
+            <p>Un concours est un examen par voie écrit soit ou étude de dossier pouvant s’étendre sur une session bien délimité et donc la réussite par le candidat donne accès en tant que étudiant à l’établissement.
+                Le formulaire si dessus permet l’ajout d’un concours.
+                Il faut spécifier le libellé du concours et son statut (oui/non). Ce dernier permet de savoir si un concours peut être étendu sur une session ou pas.</p>
+
+            <h6 id=""><b>(2)	Manipulation de concours</b></h6>
+            <p>Le groupe d’action présenté dans le                 permet l’édition   c’est-à-dire la modification du libellé d’un concours ou de son statut, l’activation    , la désactivation , la suppression   d’un concours. </p>
+            <h6 id=""><b>(3)	Affectation des spécialités à un concours</b></h6>
+            <img class="materialboxed responsive-img card" width="664" height="497" style="border: 5px;" src="{% static 'img/adm-img/adm-config-aff-spe.png' %}">
+            <sup>Fenêtre d'Affectation de spécialité à un Concours</sup>
+            <p>Après avoir sélectionné un concours et cliquer sur le bouton "<b><i>Affecter spécialité</i></b>"       , le formulaire si dessus s’ouvre il permet d’ajouter les spécialités qui participerons à ce concours par niveau et par option.  Les éléments de filtres niveau et cycle permettent de renvoyer les options d’un cycle par niveau.
+                A partir des champs à cocher, on peut affecter plusieurs options à un concours à la fois.</p>
+            <h6 id=""><b>(4)     Retirer une spécialité d’un concours</b></h6>
+            <p>Cette action permet de retirer une option d’un niveau d’un concours.</p>
+
+            <h5 id=""><b style="color: #686868;">{{ 'CONFIGURATIONS CENTRES D’EXAMENS'|upper }}</b></h5><hr/>
+            <p>Les centres d’examens sont des lieux où se dérouleront les examens de concours. La gestion des centres d’examens se trouve sous le menu configuration/ centre d’examen</p>
+            <img class="materialboxed responsive-img card" width="973" height="457" style="border: 5px;" src="{% static 'img/adm-img/adm-config-centre-exam.png' %}">
+            <sup>Interface de configuration des centres d'examen</sup>
+            <h6 id=""><b>(1)	Création de centre d’examen</b></h6>
+            <img class="materialboxed responsive-img card" width="518" height="496" style="border: 5px;" src="{% static 'img/adm-img/adm-config-edit-centre-exam.png' %}">
+            <sup>Fenêtre d'édition d'un centre d'examen</sup>
+            <p>En cliquant sur le bouton "<b><i>Créer Centre Examen</i></b>" on obtient le formulaire ci-dessus qui permet d’ajouter un centre d’examen en remplaçant son libellé, son adresse, en sélectionnant la région où  est situé le centre et en sélectionnant son statut (ce statut permet de spécifier s’il peut être utilisé lors d’un concours ou non).</p>
+
+            <h6 id=""><b>(2)	Manipulation des centres d’examens</b></h6>
+            <p>Le groupe d’action présenté dans le <b>(2)</b> permet l’édition   c’est-à-dire la modification d’un concours, l’activation    , la désactivation , la suppression   d’un concours.</p>
+
+            <h5 id=""><b style="color: #686868;">{{ 'CONFIGURATIONS TYPES FORMATIONS, ETABLIMENTS, DOMAINE DE FORMATIONS.'|upper }}</b></h5><hr/>
+            <p>Il s’agit ici des configurations nécessaires à l’enregistrement des formations précédentes ou requise d’un candidat lors de son inscription à un concours. C’est fonctionnalités ce trouve sous le menu configurations/ formations.</p>
+            <img class="materialboxed responsive-img card" width="1076" height="550" style="border: 5px;" src="{% static 'img/adm-img/adm-config-type-formation.png' %}">
+            <sup>Interface de configuration des Types de Formation</sup>
+
+            <h6 id=""><b>(1)	Types de formations</b></h6>
+            <p>Il s’agit ici d’enregistrer les différents types de cycles (BTS, LICENCE, BAC, etc) qui seront sélectionnés lorsque le candidat chargera ses formations précédentes.</p>
+            <img class="materialboxed responsive-img card" width="475" height="330" style="border: 5px;" src="{% static 'img/adm-img/adm-config-edit-type-formation.png' %}">
+            <sup>Fenêtre d'édition d'un Type de Formation</sup>
+            <p>Ce formulaire permet d’ajouter un type de formation en précisant son libellé et sa description.</p>
+            <h6 id=""><b>(2)	Etablissement</b></h6>
+            <p>Il s’agit ici d’enregistrer les établissements qui seront sélectionnés lorsque le candidat chargera ses formations précédentes. Cette fonctionnalité est rarement utilisé au niveau de la plate-forme en local car généralement c’est l’étudiant qui ajoute l’établissement dans la qu’elle-il à fait la formation si cet établissement n’est pas présent dans la liste des établissements en ligne.</p>
+
+            <img class="materialboxed responsive-img card" width="641" height="530" style="border: 5px;" src="{% static 'img/adm-img/adm-config-etab.png' %}">
+            <sup>Interface de configuration des établissements</sup>
+            <p>En cliquant sur le bouton "<b><i>Créer Etablissement</i></b>" on obtient une fenêtre qui nous permet d’ajouter un établissement en précisant tous simplement son nom.</p>
+            <img class="materialboxed responsive-img card" width="349" height="214" style="border: 5px;" src="{% static 'img/adm-img/adm-config-edit-etab.png' %}">
+            <sup>Fenêtre d'édition d'un établissement</sup>
+
+            <h6 id=""><b>(3)	Domaines de formations</b></h6>
+            <p>Il s’agit ici d’enregistrer les spécialités qui seront sélectionnés lorsque le candidat chargera ses formations précédentes.</p>
+            <img class="materialboxed responsive-img card" width="545" height="492" style="border: 5px;" src="{% static 'img/adm-img/adm-config-dom-form.png' %}">
+            <sup>Interface de configuration des domaines de formation</sup>
+
+            <p>En cliquant sur le bouton "<b><i>Créer Domain</i></b>" on obtient une fenêtre qui nous permet d’ajouter un domaine de formation  en précisant tous simplement son nom et en donnant une brève description de celui-ci.  </p>
+
+            <img class="materialboxed responsive-img card" width="475" height="331" style="border: 5px;" src="{% static 'img/adm-img/adm-config-edit-dom-form.png' %}">
+            <sup>Fenêtre d'édition d'un domaine de formation</sup>
+
+
+        </div>
+    </div>
+    <div class="row">
+      <b>
+          <div class="col s4"><a href="{%   url 'adm_intro' %}">{{ '1. Introduction Morpheus Admission'|upper }}</a></div>
+          <div class="col s4"><a style="color: #2A4E7F;" class="disabled">{{ '2. APPROCHE CONFIGURATION DU MODULE'|upper }}</a></div>
+          <div class="col s4"><a href="#">{{ '3.'|upper }}</a></div>
+      </b>
+    </div>
+{% endblock %}
