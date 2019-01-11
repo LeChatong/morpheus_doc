@@ -2,141 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d0058c5-90ef-4dec-b5dc-c1fdbe48f3dd" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-cand-candidature.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-cand-etat1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-cand-etat2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-cand-etat3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-cand-etat4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-cand-etat5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-cand-etat6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-cand-etat7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-aff-cc-session.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-aff-centre.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-aff-create-mat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-aff-mat-exm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-aff-voie-cc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-affec-no-pieces.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-create-voie.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-edit-matiere.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-edit-pieces.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-edit-profile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-edit-session.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-edit-voie.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-matiere.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-pieces.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-profil-rec.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-profil.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-profile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-rec-session.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-session.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-config-voie.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-insc-cand+.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-insc-cand-addcand.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-insc-cand-addinsc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-insc-cand-formation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-insc-cand-parent.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-insc-cand-piece.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-insc-cand-proc+.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-insc-cand-proc.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-insc-cand-val.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-insc-cand.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-insc-ligne.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-note-concours+.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-note-concours.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-note-releve+.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-note-releve.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-validation+.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-validation-admis.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/adm-img/adm-validation.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-bourse-add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-bourse-add2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-bourse-attrib.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-bourse-bourse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-bourse-express.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-bourse-filtre.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-bourse-list-bourse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-bourse-list-etd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-bourse-search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-bourse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-caisse-details.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-caisse-val-pai.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-caisse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-classe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-contact-cand.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-dashboard1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-etd-contact2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-etd-cursus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-etd-parent.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-etd-parent2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-exmnat-config-add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-exmnat-config-print.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-exmnat-config-tbl.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-exmnat-config.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-info-insc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-info-insc2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-insc_exmnat-det.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-insc_exmnat-exm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-insc_exmnat-l-etd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-insc_exmnat-list-etd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-insc_exmnat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-list-etd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-list-pai.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-list-par.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-new-aff.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-new-etd1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-new-etd2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-new-etd3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-new-etd4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-new-insc1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-new-insc3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-new-insc4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-new-insc5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-new-insc6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-paie-add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-paie-bourse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-paie-hist.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-paie-info-etd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-paie-list-etd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-paie-mat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-paie-recap.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-paie-red.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-paie-service.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-paie.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-pro-etd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-reduc-aff.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-reduc-list-etd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-reduc-pension.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-reduc-search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-reduc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-suipai-cri.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-suipai-details.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-suipai-list.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-suipai.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-transf1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco-transf2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/sco-img/sco_insc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/m-admission/doc-adm-insc-cand.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/m-admission/doc-adm-note.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/m-admission/doc-adm-online.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/m-admission/doc-adm-val-adm.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/m-admission/doc-adm-validation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/m-scolarite/doc-sco-bourse-rec.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/m-scolarite/doc-sco-exm-nat.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/m-scolarite/doc-sco-gest-pai.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/morpheus_doc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/morpheus_doc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/morpheus_doc/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/morpheus_doc/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/sco-img/sco-dashboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/m-admission/doc-adm-config.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/m-admission/doc-adm-config.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/m-admission/doc-adm-home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/m-admission/doc-adm-home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/m-admission/doc-adm-intro.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/m-admission/doc-adm-intro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/m-scolarite/doc-sco-config.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/m-scolarite/doc-sco-config.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/m-scolarite/doc-sco-gest-etd.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/m-scolarite/doc-sco-gest-etd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/m-scolarite/doc-sco-intro.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/m-scolarite/doc-sco-intro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/m-scolarite/home-doc-scolarity.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/m-scolarite/home-doc-scolarity.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manual/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_manual/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manual/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_manual/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -185,10 +51,7 @@
         <entry file="file://$PROJECT_DIR$/templates/m-scolarite/doc-sco-exm-nat.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="27" column="79" selection-start-line="27" selection-start-column="79" selection-end-line="27" selection-end-column="79" />
-              <folding>
-                <element signature="e#1967#2010#0#HTML" expanded="true" />
-              </folding>
+              <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -470,17 +333,23 @@
       <option name="project" value="LOCAL" />
       <updated>1541493399425</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="The second Commit">
+      <created>1547198312612</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1547198312612</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.505625" side_tool="true" weight="0.27640158" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.16036506" />
+      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.035202086" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.494375" weight="0.31421122" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32985657" />
@@ -491,16 +360,16 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.499375" weight="0.452412" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="8" sideWeight="0.499375" weight="0.32985657" />
       <window_info anchor="bottom" id="Thumbnails" order="8" weight="0.32985657" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32985657" />
-      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="8" sideWeight="0.499375" weight="0.32985657" />
+      <window_info anchor="right" id="Coverage" order="3" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -678,6 +547,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
           <caret line="56" column="63" selection-start-line="56" selection-start-column="63" selection-end-line="56" selection-end-column="63" />
+          <folding>
+            <element signature="e#250#273#0#HTML" expanded="true" />
+            <element signature="e#807#3924#0#HTML" />
+            <element signature="e#1649#2922#0#HTML" />
+            <element signature="e#4230#4253#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -685,6 +560,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="119" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="119" />
+          <folding>
+            <element signature="e#4112#24193#0#HTML" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -748,6 +626,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="56" column="18" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
+          <folding>
+            <element signature="e#963#3409#0#HTML" />
+            <element signature="e#3678#3701#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -819,10 +701,7 @@
     <entry file="file://$PROJECT_DIR$/templates/m-scolarite/doc-sco-exm-nat.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="27" column="79" selection-start-line="27" selection-start-column="79" selection-end-line="27" selection-end-column="79" />
-          <folding>
-            <element signature="e#1967#2010#0#HTML" expanded="true" />
-          </folding>
+          <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
         </state>
       </provider>
     </entry>
