@@ -3,7 +3,7 @@
 {% block breadcrumb %}
     <b>
         <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
-        <a style="color: #686868;" href="{% url 'adm_acceuil' %}" class="breadcrumb">{{ 'Morpheus Admission'|upper }}</a>
+        <a style="color: #2a4e7f;" href="{% url 'adm_acceuil' %}" class="breadcrumb">{{ 'Morpheus Admission'|upper }}</a>
         <a style="color: #686868;"  href="#" class="disabled breadcrumb">{{ 'Introduction Morpheus Admission'|upper }}</a>
     </b>
 {% endblock %}
@@ -13,6 +13,7 @@
         <div class="col s3">
             <div style="position: fixed;">
                 <a style="color: #2a4e7f;" href="#i_apropos"><b>{{ 'à PROPOS DE MORPHEUS / ADMISSION'|upper }}</b></a><br/>
+                <a style="color: #2a4e7f;" href="#tb"><b>{{ 'Tableau de Bord'|upper }}</b></a><br/>
             </div>
         </div>
         <div style="text-align: justify"  class="col s9">
@@ -39,7 +40,7 @@
             <p>
                 Ce manuel de l’utilisateur offre une vue d’ensemble des caractéristiques de l’application et donne des instructions pas à pas pour la réalisation de différentes tâches.
             </p>
-            <h5><b style="color: #686868;">{{ 'Tableau de Bord'|upper }}</b></h5>
+            <h5 id="tb"><b style="color: #686868;">{{ 'Tableau de Bord'|upper }}</b></h5>
             <hr/>
             <p>
                 La page suivante présente l’ensemble des sous modules de la partie <b style="color: #2a4e7f;">ADMISSION</b>.
@@ -50,9 +51,10 @@
     </div>
     <div class="row">
       <b>
-          <div class="col s4"><a href="{%   url 'adm_acceuil' %}">{{ 'Acceuil'|upper }}</a></div>
-          <div class="col s4"><a style="color: #2A4E7F;" class="disabled">{{ '1. Introduction Morpheus Admission'|upper }}</a></div>
-          <div class="col s4"><a href="{%   url 'adm_config' %}">{{ '2. APPROCHE CONFIGURATION DU MODULE'|upper }}</a></div>
+          <div class="col s3"></div>
+          <a href="{%   url 'adm_acceuil' %}"><div class="col s3">{{ 'Acceuil'|upper }}</div></a>
+          <a style="color: #2A4E7F;" class="disabled"><div class="col s3">{{ '1. Introduction Morpheus Admission'|upper }}</div></a>
+          <a href="{%   url 'adm_config' %}"><div class="col s3">{{ '2. APPROCHE CONFIGURATION DU MODULE'|upper }}</div></a>
       </b>
     </div>
 {% endblock %}

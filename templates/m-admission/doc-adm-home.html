@@ -9,30 +9,37 @@
 {% endblock %}
 {% block body %}
     {% load static %}
-    <h4>{{ 'Morpheus Admission'|upper }}</h4>
-    <div>
-    <table>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'adm_intro' %}">{{ '1. INTRODUCTION MORPHEUS/ADMISSION' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'adm_config' %}">{{ '2. APPROCHE CONFIGURATION DU MODULE' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'sco_gest_etud' %}">{{ '3. ENVOIE DE CONFIGURATIONS DE CONCOURS SUR LA PLATE-FORME EN LIGNE' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="#">{{ '4. GESTION DES INSCRIPTIONS DES CANDIDATS AUX CONCOURS' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="#">{{ '5. VALIDATION ADMISSIBILITE D’UN CANDIDAT' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="#">{{ '6. APPROCHE ENREGISTREMENT ET IMPRESSION DES PV DE NOTES DE CONCOURS' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="#">{{ '7. APPROCHE VALIDATION ADMISSIBILITE D’UN CANDIDAT' }}</a></h5></td>
-        </tr>
-    </table>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s10">
+            <b><h4>{{ 'Morpheus Admission'|upper }}</h4></b>
+            <div>
+                <table>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'adm_intro' %}">{{ '1. INTRODUCTION MORPHEUS/ADMISSION' }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'adm_config' %}">{{ '2. APPROCHE CONFIGURATION DU MODULE' }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'adm_online' %}">{{ '3. ENVOIE DE CONFIGURATIONS DE CONCOURS SUR LA PLATE-FORME EN LIGNE' }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'adm_inscand' %}">{{ '4. GESTION DES INSCRIPTIONS DES CANDIDATS AUX CONCOURS' }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'adm_val' %}">{{ '5. ADMISSIBILITé D’UN CANDIDAT'|upper }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'adm_note' %}">{{ '6. APPROCHE ENREGISTREMENT ET IMPRESSION DES PV DE NOTES DE CONCOURS' }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'adm_val_cand' %}">{{ '7. APPROCHE VALIDATION D’ADMISSION ET IMPRESSION DES RESULTATS' }}</a></h5></td>
+                </tr>
+            </table>
+            </div>
+        </div>
     </div>
+
+
 {% endblock %}

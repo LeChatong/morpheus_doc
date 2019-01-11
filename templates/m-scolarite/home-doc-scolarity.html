@@ -9,33 +9,40 @@
 
 {% endblock %}
 {% block body %}
-    <h4>{{ 'Morpheus Scolarité'|upper }}</h4>
-    <div>
-    <table>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'sco_intro' %}">{{ '1. INTRODUCTION MORPHEUS/SCOLARITE' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'sco_config_pension' %}">{{ '2. APPROCHE CONFIGURATION DU MODULE' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'sco_gest_etud' %}">{{ '3. GESTION DES ETUDIANTS ET DES INSCRIPTIONS' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="#">{{ '4. GESTION DES PAIEMENTS' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="#">{{ '5. GESTION DES BOURSES ET REDUCTIONS SUR PENSION' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="#">{{ '6. GESTION DES EXAMENS NATIONAUX' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="#">{{ '7. GESTION DES MORATOIRES' }}</a></h5></td>
-        </tr>
-        <tr>
-            <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="#">{{ '8. GESTION DES ETATS' }}</a></h5></td>
-        </tr>
-    </table>
+    {% load static %}
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s10">
+            <b><h4>{{ 'Morpheus Scolarité'|upper }}</h4></b>
+            <div>
+                <table>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'sco_intro' %}">{{ '1. INTRODUCTION MORPHEUS/SCOLARITE' }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'sco_config_pension' %}">{{ '2. APPROCHE CONFIGURATION DU MODULE' }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'sco_gest_etud' %}">{{ '3. GESTION DES ETUDIANTS ET DES INSCRIPTIONS' }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'sco_gest_paie' %}">{{ '4. GESTION DES PAIEMENTS' }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'sco_gest_bourse_rec' %}">{{ '5. GESTION DES BOURSES ET REDUCTIONS SUR PENSION' }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'sco_gest_exm_nat' %}">{{ '6. GESTION DES EXAMENS NATIONAUX' }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="#">{{ '7. GESTION DES MORATOIRES' }}</a></h5></td>
+                </tr>
+                <tr>
+                    <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="#">{{ '8. GESTION DES ETATS' }}</a></h5></td>
+                </tr>
+            </table>
+            </div>
+        </div>
     </div>
+
 {% endblock %}

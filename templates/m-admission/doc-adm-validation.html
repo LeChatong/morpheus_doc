@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Documentation Admission | Admissibilité des Candidats{% endblock %}
+{% block breadcrumb %}
+    <b>
+        <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
+        <a style="color: #2a4e7f;" href="{% url 'adm_acceuil' %}" class="breadcrumb">{{ 'Morpheus Admission'|upper }}</a>
+        <a style="color: #686868;"  href="#" class="disabled breadcrumb">{{ 'ADMISSIBILITé D’UN CANDIDAT'|upper }}</a>
+    </b>
+{% endblock %}
+{% block body %}
+    {% load static %}
+    <div class="row">
+        <div class="col s3 left">
+            <div style="position: fixed;">
+                <a style="color: #2a4e7f;" href="#desc_pro"><b>{{ 'DESCRIPTION DU PROCESSUS D’ETUDE D’ADMIS...'|upper }}</b></a><br/>
+                <a style="color: #2a4e7f;" href="#etat"><b>{{ 'ETATS POUVANT ETRES IMPRIMER'|upper }}</b></a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#etat1">Liste des candidats participant à une session de concours </a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#etat2">Liste des dossiers ayant des pièces manquantes</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#etat3">Procès-verbal pour étude de dossiers</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#etat4">Avoir un état périodique de paiement des frais d’inscriptions</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#etat5">Liste des candidats n’étant pas inscrit en tant que étudiant</a><br/>
+            </div>
+        </div>
+        <div style="text-align: justify"  class="col s9">
+            <h4><b style="color: #2a4e7f;">{{ 'ADMISSIBILITé D’UN CANDIDAT'|upper }}</b></h4><hr/>
+            <p>
+                Ce chapitre concerne la validation de l’aptitude d’un candidat à composer un concours, il permet de représenter directement (concours par voie d’examen) à un décideur l’ensemble des éléments obtenus lors de l’inscription d’un candidat pour étude ou indirectement (concours par étude de dossier) à travers des procès-verbaux qui sont des documents formalisé pour faciliter l’étude de l’admissibilité et directement l’admission d’un candidat à un concours.
+            </p>
+             <h5 id="desc_pro"><b style="color: #686868;">{{ 'DESCRIPTION DU PROCESSUS D’ETUDE D’ADMISSIBILITE D’UN CANDIDAT'|upper }}</b></h5><hr/>
+            <img class="materialboxed responsive-img card" width="835" height="646" style="border: 5px;" src="{% static 'img/adm-img/adm-cand-candidature.png' %}">
+            <sup>Interface de Gestion des Candidatures</sup>
+            <p>
+                Après avoir obtenu la liste de dossier dans candidat d’une session concours, en utilisant le filtre sur la figure ci-dessus.<br/>
+                S’il s’agit d’un concours par voie d’examen, l’opérateur étudiera les informations du candidat qui lui seront présenté : Etat civil, contacts, parents, formations précédentes, pièces fournis lors de son inscription. Et décidera par la suite s’il est admissible (en cliquant sur le bouton <b style="color: #2A4E7F;">Valider ce candidat</b>) ou non (en cliquant sur le bouton sur le bouton <b style="color: #2A4E7F;">Rejeter</b>) à participer au concours.<br/>
+                S’il s’agit d’un concours par étude de dossier, l’opérateur imprimera le procès-verbal de la session de concours correspondant au filtre sélectionné. Après traitement du procès-verbal  par les personnes habilitées (hors du système), le résultat sera reporté dans le système en validant ceux qui auront été jugé admissible et en rejetant les non admissible.<br/>
+                <b><span style="color: #0f9d58">NB : <i>les dossiers en vert son ceux qui ont déjà été jugé admissible</i></span></b>
+            </p>
+            <h5 id="etat"><b style="color: #686868;">{{ 'ETATS POUVANT ETRES IMPRIMER.'|upper }}</b></h5><hr/>
+
+            <h6 id="etat1"><b>-	Liste des candidats participant à une session de concours</b></h6><hr/>
+            <img class="materialboxed responsive-img card" width="825" height="675" style="border: 5px;" src="{% static 'img/adm-img/adm-cand-etat1.png' %}">
+            <sup>Liste des candidats participant à une session de concours</sup>
+
+            <h6 id="etat2"><b>-	Liste des dossiers ayant des pièces manquantes</b></h6><hr/>
+            <img class="materialboxed responsive-img card" width="832" height="409" style="border: 5px;" src="{% static 'img/adm-img/adm-cand-etat2.png' %}">
+            <sup>Liste des dossiers ayant des pièces manquantes</sup>
+
+            <h6 id="etat3"><b>-	Procès-verbal pour étude de dossiers</b></h6><hr/>
+            <img class="materialboxed responsive-img card" width="736" height="472" style="border: 5px;" src="{% static 'img/adm-img/adm-cand-etat3.png' %}">
+            <sup>Liste des dossiers ayant des pièces manquantes</sup>
+
+            <h6 id="etat4"><b>-	Avoir un état périodique de paiement des frais d’inscriptions</b></h6><hr/>
+            <img class="materialboxed responsive-img card" width="821" height="491" style="border: 5px;" src="{% static 'img/adm-img/adm-cand-etat4.png' %}">
+            <sup>Avoir un état périodique de paiement des frais d’inscriptions</sup>
+            <img class="materialboxed responsive-img card" width="805" height="535" style="border: 5px;" src="{% static 'img/adm-img/adm-cand-etat5.png' %}">
+
+            <h6 id="etat5"><b>-	Liste des candidats n’étant pas inscrit en tant que étudiant</b></h6><hr/>
+            <img class="materialboxed responsive-img card" width="707" height="410" style="border: 5px;" src="{% static 'img/adm-img/adm-cand-etat6.png' %}">
+            <sup>Liste des candidats n’étant pas inscrit en tant que étudiant</sup>
+            <img class="materialboxed responsive-img card" width="604" height="386" style="border: 5px;" src="{% static 'img/adm-img/adm-cand-etat7.png' %}">
+
+        </div>
+
+    </div>
+    <div class="row">
+      <b>
+          <div class="col s3"></div>
+          <div class="col s3"><a href="{%   url 'adm_inscand' %}">{{ '4. GESTION DES INSCRIPTIONS DES CANDIDATS AUX CONCOURS'|upper }}</a></div>
+          <div class="col s3"><a style="color: #2A4E7F;" class="disabled">{{ '5. ADMISSIBILITé D’UN CANDIDAT'|upper }}</a></div>
+          <div class="col s3"><a href="{%  url 'adm_note' %}">{{ '6. APPROCHE ENREGISTREMENT ET IMPRESSION DES PV DE NOTES DE CONCOURS'|upper }}</a></div>
+      </b>
+    </div>
+{% endblock %}

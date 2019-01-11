@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% block title %}Documentation Scolarité | Paiements{% endblock %}
+{% block breadcrumb %}
+    <b>
+        <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
+        <a style="color: #2a4e7f;" href="{% url 'sco_accueil' %}" class="breadcrumb">{{ 'Morpheus Scolarité'|upper }}</a>
+        <a style="color: #686868;"  href="#" class="disabled breadcrumb">{{ 'Gestion des paiements'|upper }}</a>
+    </b>
+
+{% endblock %}
+{% block body %}
+    {% load static %}
+    <div class="row">
+        <div class="col s3">
+            <div style="position: fixed;">
+                <a style="color: #2a4e7f;" href="#paiement"><b>{{ 'paiements'|upper }}</b></a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#anneeacca">(1)	Année Académique</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#z_rech">(2)	Zone de recherche</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#tab">(3)	Tableau</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#panel">(4)	Panel « <i>Informations sur l’étudiant</i> »</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#hist">(5)	Bouton « <i>Historique Paiement</i> »</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#bourse">(6)	Bourses</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#red">(7)	Reduction sur Pension</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#service">(8)	Services</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#mat">(9)	Matières Non Validées</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#recap">(10)	Récapitulatif</a><br/>
+
+                <a style="color: #2a4e7f;" href="#caisse"><b>{{ 'caisse'|upper }}</b></a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#actual">(1)	Bouton « <i>Actualiser</i> »</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#l_pai">(2)	Liste de Paiements</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#d_enc">(3)	Détails encaissement</a><br/>
+
+                <a style="color: #2a4e7f;" href="#suipai"><b>{{ 'SUIVI PAIEMENT'|upper }}</b></a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#z_rech2">(1)	Zone de recherche</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#l_pai2">(2)	Liste de Paiements</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#d_pai">(3)	Détails du Paiement</a><br/>
+            </div>
+        </div>
+        <div style="text-align: justify" class="col s9">
+            <h4><b style="color: #2a4e7f;">{{ 'GESTION DES PAIEMENTS'|upper }}</b></h4>
+            <p>
+                Dans ce chapitre nous verrons principalement comment les paiements sont manipulés dans l’application.
+            </p>
+            <h5 id="paiement"><b style="color: #686868;">{{ 'paiements'|upper }}</b></h5>
+            <hr/>
+
+            <p>
+                Dans cette partie nous verrons comment sont effectués les paiements de frais de scolarité lorsqu’un étudiant se présente à la scolarité de l’établissement.
+                Ce travail s’effectue sur l’interface suivante, qui s’ouvre lorsque l’on clique sur le lien « <b>PAIEMENT</b> » du tableau de bord du module.
+            </p>
+            <img class="materialboxed responsive-img card" width="1290" height="695" style="border: 5px;" src="{% static 'img/sco-img/sco-paie.png' %}">
+            <sup>Interface de Gestion des Paiements</sup>
+
+            <p>
+                Nous allons maintenant expliquer chaque élément de cette interface à l’aide des différents points.
+            </p>
+
+            <h6 id="anneeacca"><b>(1)	Année Académique</b></h6>
+                <hr>
+            <p>
+                Permet de lister les années académiques utilisables du système.
+                Qui permettra de manipuler les étudiants inscrits pour l’année académique choisit.
+            </p>
+
+            <h6 id="z_rech"><b>(2)	Zone de recherche</b></h6>
+                <hr>
+            <p>
+                Cette partie permet de rechercher rapidement un étudiant,
+                le résultat de cette recherche sera affiché dans le tableau (<span style="color: #c00000">zone encadré en rouge</span>).
+            </p>
+
+            <h6 id="tab"><b>(3)	Tableau</b></h6>
+                <hr>
+            <p>
+                Ce tableau est chargé après avoir effectué la recherche d’un étudiant (voir paragraphe (2) zone de recherche) et
+                permet des lister les étudiants inscrits pour l’année académique choisit en fonction du nom saisit dans la zone de recherche.
+            </p>
+            <img class="materialboxed responsive-img card" width="680" height="368" style="border: 5px;" src="{% static 'img/sco-img/sco-paie-list-etd.png' %}">
+            <sup>Liste des étudiants afficher après une recherche</sup>
+            <p>
+                Le clic sur le lien « <b>Choix</b> » permet sélectionner un étudiant et d’afficher ses informations dans la partie droite de l’interface.
+            </p>
+
+            <h6 id="panel"><b>(4)	Panel « <i>Informations sur l’étudiant</i> »</b></h6>
+                <hr>
+            <p>
+                Les informations de l’étudiant sont chargées  après avoir choisi l’étudiant dans le tableau.
+            </p>
+            <img class="materialboxed responsive-img card" width="568" height="227" style="border: 5px;" src="{% static 'img/sco-img/sco-paie-info-etd.png' %}">
+            <sup>Liste des étudiants afficher après une recherche</sup>
+
+            <p>
+                L’élément « <b>Classe</b> » permet de lister les différentes classes dans lesquelles l’étudiant est inscrit au cours de l’année académique en cours.
+            </p>
+            <p>
+                Le choix d’une classe permet d’actualiser les informations les paiements de l’étudiant plus bas.
+            </p>
+
+            <h6 id="hist"><b>(5)	Bouton « <i>Historique Paiement</i> »</b></h6>
+                <hr>
+            <p>
+                Ce bouton s’active après avoir sélectionné la classe et permet de lister l’ensemble des versements de l’étudiant.
+                Le clic sur ce bouton permet d’afficher la fenêtre suivante.
+            </p>
+
+            <img class="materialboxed responsive-img card" width="534" height="171" style="border: 5px;" src="{% static 'img/sco-img/sco-paie-hist.png' %}">
+            <sup>Historique des paiements de l'étudiant</sup>
+
+            <h6 id="bourse"><b>(6)	Bourses</b></h6>
+                <hr>
+            <p>
+                Cette partie permet de lister les bourses de l’étudiant s’il en a bien sûr.
+            </p>
+            <img class="materialboxed responsive-img card" width="819" height="101" style="border: 5px;" src="{% static 'img/sco-img/sco-paie-bourse.png' %}">
+            <sup>Bourses de l'étudiant</sup>
+
+            <h6 id="red"><b>(7)	Réductions sur pension</b></h6>
+                <hr>
+            <p>
+                Cette partie permet de lister les réductions sur pension accordé par l’établissement à l’étudiant sur l’année académique choisit.
+            </p>
+            <img class="materialboxed responsive-img card" width="823" height="95" style="border: 5px;" src="{% static 'img/sco-img/sco-paie-red.png' %}">
+            <sup>Réduction sur Pension de l'étudiant</sup>
+
+            <h6 id="service"><b>(8)	Services</b></h6>
+                <hr>
+            <p>
+                Cette partie permet de lister les services auxquelles l’étudiant à souscrit sur l’année académique choisit.
+            </p>
+            <img class="materialboxed responsive-img card" width="803" height="103" style="border: 5px;" src="{% static 'img/sco-img/sco-paie-service.png' %}">
+            <sup>Services souscrit par l'étudiant</sup>
+
+            <h6 id="mat"><b>(9)	Matières Non Validées</b></h6>
+                <hr>
+            <p>
+                Cette partie liste les matières que l’étudiant doit refaire dans la classe au cours de l’année académique (s’il est redoublant) avec leur montant.
+            </p>
+            <img class="materialboxed responsive-img card" width="828" height="154" style="border: 5px;" src="{% static 'img/sco-img/sco-paie-mat.png' %}">
+            <sup>Matières Non Validées</sup>
+
+            <h6 id="recap"><b>(10)	Récapitulatif</b></h6>
+                <hr>
+            <p>
+                Cette partie permet d’avoir un récapitulatif sur les paiements de la scolarité de l’étudiant dans la classe choisit.
+            </p>
+            <img class="materialboxed responsive-img card" width="736" height="249" style="border: 5px;" src="{% static 'img/sco-img/sco-paie-recap.png' %}">
+            <sup>Récapitulatif sur la Pension de l'étudiant</sup>
+            <p>
+                Le lien « <b>Ajouter Paiement</b> » permet d’ouvrir le formulaire d’enregistrement d’un paiement de la scolarité.
+            </p>
+            <img class="materialboxed responsive-img card" width="726" height="284" style="border: 5px;" src="{% static 'img/sco-img/sco-paie-add.png' %}">
+            <sup>Fenêtre d'ajout d'un Paiement</sup>
+            <p>
+                Il suffit d’entrer les informations du paiement et « <b>enregistrer</b> ». Pour que le paiement soit valide l’étudiant devra aller le faire valider à la caisse (voir chapitre <b>CAISSE</b>).
+            </p>
+
+            <h5 id="caisse"><b style="color: #686868;">{{ 'caisse'|upper }}</b></h5>
+            <hr/>
+
+            <p>
+                Cette partie est accessible lorsqu’on clique sur le lien « <b style="color: #2a4e7f">Caisse</b> »
+                sur le tableau de bord du module et permet principalement de valider les différents paiements effectués par l’étudiant  à savoir :
+            </p>
+            <p>
+                -	Les frais de Concours (Module ADMISSION)<br/>
+                -	Les frais de Scolarités<br/>
+                -	Les frais de Services<br/>
+                -	Les frais d’inscription à un examen national (sous module Inscription Examen)<br/>
+                -	Les frais de loyer (Module LOCATION)<br/>
+            </p>
+            <p>
+                Ces traitements se fait sur l’interface suivant.
+            </p>
+            <img class="materialboxed responsive-img card" width="1293" height="610" style="border: 5px;" src="{% static 'img/sco-img/sco-caisse.png' %}">
+            <sup>Interface de gestion de la caisse</sup>
+
+            <h6 id="actual"><b>(1)	Bouton « <i>Actualiser</i> »</b></h6><hr>
+            <p>Le clic sur ce bouton  permet de recharger le tableau au-dessous (encadré en vert) au cas où il y’a de nouveaux paiement ajouté.</p>
+
+            <h6 id="l_pai"><b>(2)	Liste de Paiements</b></h6><hr>
+            <p>
+                Le Tableau des paiements liste les paiements effectués par la scolarité le jour où l’on est et aussi en fonction du quartier ou se trouve la caisse.
+                Ce tableau s’actualise automatiquement après quelques secondes pour voir si d’autres paiements sont enregistrés.
+            </p>
+            <p>
+                Un paiement peut être « <b>Annulé</b> » ou « <b>Validé</b> ».
+            </p>
+            <p>
+                Le clic sur  le lien « <b>Valider</b> » du tableau ouvre la fenêtre suivante
+            </p>
+            <img class="materialboxed responsive-img card" width="347" height="338" style="border: 5px;" src="{% static 'img/sco-img/sco-caisse-val-pai.png' %}">
+            <sup>Fenêtre de validation d'un Paiement</sup>
+            <p>
+                Sur laquelle le (la) caissier(ère) peut modifier le montant (dans le cas où il y’a eu erreur de compte ou un faux billet)
+                avant de valider en choisissant d’imprimer le reçu ou pas.
+                C’est après cette action que le paiement sera considérer.
+            </p>
+            <p>
+                Le clic sur le lien « <b>Annuler</b> » annulera le paiement après confirmation et il ne sera plus visible sur le tableau, ni considérer.
+            </p>
+            <p>
+                <b><u>NB :</u></b> Si le paiement n’est ni Validé, ni Annulé dans la journée, il ne sera plus visible dans les prochains jours.
+            </p>
+
+            <h6 id="d_enc"><b>(3)	Détails encaissement</b></h6><hr>
+            <img class="materialboxed responsive-img card" width="475" height="241" style="border: 5px;" src="{% static 'img/sco-img/sco-caisse-details.png' %}">
+            <sup>Fenêtre de validation d'un Paiement</sup>
+            <p>
+                Permet d’avoir un récapitulatif des versements encaissé par le (la) caissier (ère) le jour que l’on est.
+                Il s’actualise après chaque validation.
+            </p>
+
+            <h5 id="suipai"><b style="color: #686868;">{{ 'SUIVI PAIEMENT'|upper }}</b></h5>
+            <hr/>
+            <p>
+                Cette partie permet principalement d’avoir une visualisation des paiements et d’avoir les détails sur ceux-ci.
+            </p>
+            <img class="materialboxed responsive-img card" width="1252" height="569" style="border: 5px;" src="{% static 'img/sco-img/sco-suipai.png' %}">
+            <sup>Interface "Suivi Paiement"</sup>
+
+            <h6 id="z_rech2"><b>(1)	Zone de recherche</b></h6><hr>
+            <img class="materialboxed responsive-img card" width="686" height="224" style="border: 5px;" src="{% static 'img/sco-img/sco-suipai-cri.png' %}">
+            <sup>Critères de recherche</sup>
+            <p>
+                Ce bloc présente les critères de recherches des paiements. Le clic sur le lien « Recherche » listera dans le tableau (paragraphe (2) Liste de Paiements)
+                les paiements Validé, Non Validé ou même les deux en fonction de la date de début et de fin.
+            </p>
+
+            <h6 id="l_pai2"><b>(2)	Liste de Paiements</b></h6><hr>
+            <p>
+                Ce bloc liste les paiements résultants de la recherche effectuée dans la zone de recherche (paragraphe (1) Zone de recherche).
+            </p>
+            <img class="materialboxed responsive-img card" width="684" height="389" style="border: 5px;" src="{% static 'img/sco-img/sco-suipai-list.png' %}">
+            <sup>Liste des paiements après recherche</sup>
+            <p>
+                Le clic sur le lien « <b>Choisir</b> » d’un paiement actualisera ses informations dans la partie de droite de l’écran.
+            </p>
+
+            <h6 id="d_pai"><b>(3)	Détails du Paiement</b></h6><hr>
+            <img class="materialboxed responsive-img card" width="733" height="319" style="border: 5px;" src="{% static 'img/sco-img/sco-suipai-details.png' %}">
+            <sup>Liste des paiements après recherche</sup>
+            <p>
+                Ce bloc présente des informations sur le paiement choisi (voir paragraphe (2) Liste de Paiements)
+                notamment l’étudiant concerné, sa classe, la date de paiement  ainsi que les détails du type de Paiement.
+            </p>
+            <p>
+                Les liens "<b style="color: #2a4e7f">Valider Paiement</b>" (lorsque le paiement n’est pas validé) ou "<b style="color: #c00000">Annuler Paiement</b>" (lorsque le paiement est validé), permettent respectivement de valider ou d’annuler le paiement choisi.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+      <b>
+          <div class="col s3"></div>
+          <div class="col s3"><a href="{%   url 'sco_gest_etud' %}">{{ '3. Gestion des étudiants & Inscriptions'|upper }}</a></div>
+          <div class="col s3"><a style="color: #2A4E7F;" class="disabled">{{ '4. GESTION DES PAIEMENTS'|upper }}</a></div>
+          <div class="col s3"><a href="{%   url 'sco_gest_bourse_rec' %}">{{ '5. GESTION DES BOURSES ET REDUCTIONS SUR PENSION'|upper }}</a></div>
+      </b>
+    </div>
+{% endblock %}

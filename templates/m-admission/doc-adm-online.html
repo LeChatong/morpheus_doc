@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Documentation Admission | Envoi Concours En Ligne{% endblock %}
+{% block breadcrumb %}
+    <b>
+        <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
+        <a style="color: #2a4e7f;" href="{% url 'adm_acceuil' %}" class="breadcrumb">{{ 'Morpheus Admission'|upper }}</a>
+        <a style="color: #686868;"  href="#" class="disabled breadcrumb">{{ 'ENVOIE DE CONFIGURATIONS DE CONCOURS SUR LA PLATE-FORME EN LIGNE'|upper }}</a>
+    </b>
+{% endblock %}
+{% block body %}
+    {% load static %}
+    <div class="row">
+        <div class="col s3 left">
+            <div style="position: fixed;">
+                 <a style="color: #2a4e7f;" href="#dp"><b>{{ 'DESCRIPTION DU PROCESSUS'|upper }}</b></a><br/>
+            </div>
+        </div>
+        <div style="text-align: justify"  class="col s9">
+            <h4><b style="color: #2a4e7f;">{{ 'ENVOIE DE CONFIGURATIONS DE CONCOURS SUR LA PLATE-FORME EN LIGNE'|upper }}</b></h4><hr/>
+            <h5 id="dp"><b style="color: #686868;">{{ 'DESCRIPTION DU PROCESSUS'|upper }}</b></h5><hr/>
+            <p>
+                Il s’agit ici de la mise à jour des configurations des concours en ligne. Après l’ajout ou la modification d’un élément de configuration, il est important que cet ajout ou modification soit reporté  sur la plate-forme d’inscription en ligne car cette plate-forme est essentiellement configurée à partie des configurations que nous venons de décrire plus haut. En effet un processus a été mis en place pour permettre cette mise à jour. Ce processus vous sera décrit dans le manuel d’utilisateur de la plate-forme d’inscription en ligne.
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+      <b>
+          <div class="col s3"></div>
+          <div class="col s3"><a href="{%   url 'adm_config' %}">{{ '2. APPROCHE CONFIGURATION DU MODULE'|upper }}</a></div>
+          <div class="col s3"><a style="color: #2A4E7F;" class="disabled">{{ '3. ENVOIE DE CONFIGURATIONS DE CONCOURS SUR LA PLATE-FORME EN LIGNE'|upper }}</a></div>
+          <div class="col s3"><a href="{% url 'adm_inscand' %}">{{ '4. GESTION DES INSCRIPTIONS DES CANDIDATS AUX CONCOURS'|upper }}</a></div>
+      </b>
+    </div>
+{% endblock %}

@@ -10,49 +10,61 @@
 {% endblock %}
 {% block body %}
     {% load static %}
-    <div style="text-align: justify">
-        <h4><b style="color: #2a4e7f;">{{ 'Introduction Morpheus Scolarité'|upper }}</b></h4>
-        <hr/>
-        <h5><b style="color: #686868;">{{ 'à PROPOS DE MORPHEUS / SCOLARITE'|upper }}</b></h5>
-        <hr/>
-        <p>
-            MORPHEUS est un ERP (<b style="color: #686868;"><i>Enterprise Resource Planning</i></b>) mise en place par le <b>SEED (<i>Software Engineering Enterprise Division</i>)</b> en vue de gérer l’ensemble des processus métiers au sein de l’IUC, et ceci à travers différents modules.
-        </p>
-        <p>
-            Le Module <b style="color: #2a4e7f;">SCOLARITE</b> de MORPHEUS est celui centré sur la gestion des étudiants au sein de l’institut, de leur enregistrement en passant par toutes les opérations pouvant être effectué sur un étudiant dans l’établissement tels que :
-        </p>
-        <b>
-            <ul>
-                <li>•	L’inscription</li>
-                <li>•	Paiement de frais de scolarité</li>
-                <li>•	Attribution de bourses</li>
-                <li>•	Attribution de moratoires</li>
-                <li>•	Transfert</li>
-                <li>•	Etc.</li>
-            </ul>
-        </b>
-        <p>
-            Apprendre à utiliser ce module  n’a rien de compliqué, mais cela suppose de bien comprendre les termes, les concepts et les méthodes employés dans ce Manuel de l’utilisateur.
-            Nous vous conseillons d’étudier ce manuel en détail avant d’utiliser le logiciel.
-        </p>
-        <p>
-            Ce manuel de l’utilisateur offre une vue d’ensemble des caractéristiques de l’application et donne des instructions pas à pas pour la réalisation de différentes tâches.
-        </p>
+    <div class="row">
+        <div class="col s3 left">
+            <div style="position: fixed;">
+                <a style="color: #2a4e7f;" href="#ap"><b>{{ 'à PROPOS DE MORPHEUS / SCOLARITé'|upper }}</b></a><br/>
+                <a style="color: #2a4e7f;" href="#tb"><b>{{ 'Tableau de Bord'|upper }}</b></a><br/>
+            </div>
+        </div>
+        <div style="text-align: justify"  class="col s9">
+            <div style="text-align: justify">
+                <h4><b style="color: #2a4e7f;">{{ 'Introduction Morpheus Scolarité'|upper }}</b></h4>
+                <hr/>
+                <h5 id="ap"><b style="color: #686868;">{{ 'à PROPOS DE MORPHEUS / SCOLARITE'|upper }}</b></h5>
+                <hr/>
+                <p>
+                    MORPHEUS est un ERP (<b style="color: #686868;"><i>Enterprise Resource Planning</i></b>) mise en place par le <b>SEED (<i>Software Engineering Enterprise Division</i>)</b> en vue de gérer l’ensemble des processus métiers au sein de l’IUC, et ceci à travers différents modules.
+                </p>
+                <p>
+                    Le Module <b style="color: #2a4e7f;">SCOLARITE</b> de MORPHEUS est celui centré sur la gestion des étudiants au sein de l’institut, de leur enregistrement en passant par toutes les opérations pouvant être effectué sur un étudiant dans l’établissement tels que :
+                </p>
+                <b>
+                    <ul>
+                        <li>•	L’inscription</li>
+                        <li>•	Paiement de frais de scolarité</li>
+                        <li>•	Attribution de bourses</li>
+                        <li>•	Attribution de moratoires</li>
+                        <li>•	Transfert</li>
+                        <li>•	Etc.</li>
+                    </ul>
+                </b>
+                <p>
+                    Apprendre à utiliser ce module  n’a rien de compliqué, mais cela suppose de bien comprendre les termes, les concepts et les méthodes employés dans ce Manuel de l’utilisateur.
+                    Nous vous conseillons d’étudier ce manuel en détail avant d’utiliser le logiciel.
+                </p>
+                <p>
+                    Ce manuel de l’utilisateur offre une vue d’ensemble des caractéristiques de l’application et donne des instructions pas à pas pour la réalisation de différentes tâches.
+                </p>
 
-        <h5><b style="color: #686868;">{{ 'Tableau de Bord'|upper }}</b></h5>
-        <hr/>
-        <p>
-            La page suivante présente l’ensemble des sous modules de la partie <b style="color: #2a4e7f;">SCOLARITE</b>.
-        </p>
-        <img class="materialboxed responsive-img card" height="800" width="1600" style="border: 5px;" src="{% static 'img/sco-img/sco-dashboard.png' %}">
-            <sup>Tableau de Bord</sup>
-    </div>
+                <h5 id="tb"><b style="color: #686868;">{{ 'Tableau de Bord'|upper }}</b></h5>
+                <hr/>
+                <p>
+                    La page suivante présente l’ensemble des sous modules de la partie <b style="color: #2a4e7f;">SCOLARITE</b>.
+                </p>
+                <img class="materialboxed responsive-img card" height="800" width="1600" style="border: 5px;" src="{% static 'img/sco-img/sco-dashboard1.png' %}">
+                    <sup>Tableau de Bord</sup>
+            </div>
+        </div>
     <div class="row">
         <b>
-          <div class="col s4"><a href="{%   url 'sco_accueil' %}">{{ 'Acceuil'|upper }}</a></div>
-          <div class="col s4"><a style="color: #2A4E7F;" class="disabled">{{ '1. Introduction Morpheus Scolarité'|upper }}</a></div>
-          <div class="col s4"><a href="{%   url 'sco_config_pension' %}">{{ '2. Approche Configuration du module'|upper }}</a></div>
+            <div class="col s3"></div>
+            <div class="col s3"><a href="{%   url 'sco_accueil' %}">{{ 'Acceuil'|upper }}</a></div>
+            <div class="col s3"><a style="color: #2A4E7F;" class="disabled">{{ '1. Introduction Morpheus Scolarité'|upper }}</a></div>
+            <div class="col s3"><a href="{%   url 'sco_config_pension' %}">{{ '2. Approche Configuration du module'|upper }}</a></div>
         </b>
     </div>
+    </div>
+
 
 {% endblock %}

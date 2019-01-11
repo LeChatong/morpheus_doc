@@ -20,6 +20,14 @@ def sco_intro(resquest):
 def sco_gest_etudiant(resquest):
     return render(resquest, 'm-scolarite/doc-sco-gest-etd.html')
 
+def sco_gest_paiement(resquest):
+    return render(resquest, 'm-scolarite/doc-sco-gest-pai.html')
+
+def sco_gest_bourse_rec(resquest):
+    return render(resquest, 'm-scolarite/doc-sco-bourse-rec.html')
+
+def sco_gest_exm_nat(resquest):
+    return render(resquest, 'm-scolarite/doc-sco-exm-nat.html')
 
 def adm_home(resquest):
     return render(resquest, 'm-admission/doc-adm-home.html')
@@ -29,6 +37,21 @@ def adm_intro(resquest):
 
 def adm_config(resquest):
     return render(resquest, 'm-admission/doc-adm-config.html')
+
+def adm_online(resquest):
+    return render(resquest, 'm-admission/doc-adm-online.html')
+
+def adm_inscand(resquest):
+    return render(resquest, 'm-admission/doc-adm-insc-cand.html')
+
+def adm_val(resquest):
+    return render(resquest, 'm-admission/doc-adm-validation.html')
+
+def adm_note(resquest):
+    return render(resquest, 'm-admission/doc-adm-note.html')
+
+def adm_valcand(resquest):
+    return render(resquest, 'm-admission/doc-adm-val-adm.html')
 
 def loc_home(resquest):
     return render(resquest, 'm-location/doc-loc-home.html')

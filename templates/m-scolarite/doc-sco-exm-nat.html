@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% block title %}Documentation Scolarité | Paiements{% endblock %}
+{% block breadcrumb %}
+    <b>
+        <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
+        <a style="color: #2a4e7f;" href="{% url 'sco_accueil' %}" class="breadcrumb">{{ 'Morpheus Scolarité'|upper }}</a>
+        <a style="color: #686868;"  href="#" class="disabled breadcrumb">{{ 'GESTION DES EXAMENS NATIONAUX'|upper }}</a>
+    </b>
+
+{% endblock %}
+{% block body %}
+    {% load static %}
+    <div class="row">
+        <div class="col s3">
+            <div style="position: fixed;">
+                <a style="color: #2a4e7f;" href="#bourse"><b>{{ 'CONFIGURATION DES EXAMENS NATIONAUX'|upper }}</b></a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#annee_aca">(1)    Année Académique</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#filtre">(2)	Filtre « Niveau & Option »</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#btn_new">(3)	Bouton « <i>Nouvel Examen</i> »</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#tbl_exm">(4)	Le Tableau d’Examen</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#etat_exm">(5)	Etats sur les Examens Nationaux</a><br/>
+
+                <a style="color: #2a4e7f;" href="#insc_exm"><b>{{ 'INSCRIPTION AUX EXAMENS NATIONAUX'|upper }}</b></a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#annee_aca2">(1)	Année Académique</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#ec_cy">(2)	Ecole / Cycle / Classe</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#exm">(3)	Examen</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#l_etd">(4)	Liste des étudiants inscrits dans la classe</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#l_etd_exm">(5)	Liste des étudiants de la classe inscrits à l’examen</a><br/>
+            </div>
+        </div>
+        <div style="text-align: justify" class="col s9">
+            <h4><b style="color: #2a4e7f;">{{ 'GESTION DES EXAMENS NATIONAUX'|upper }}</b></h4>
+            <p>
+                Dans ce chapitre, nous verrons principalement comment créer les examens nationaux dans le système et comment inscrire des étudiants à ceux-ci.
+            </p>
+            <p>
+                <b><u>NB :</u></b> Il ne s’agit en aucun cas d’organiser des examens, ni d’avoir des notes des étudiants pour ces examens.
+            </p>
+
+            <h5 id=""><b style="color: #686868;">{{ 'CONFIGURATION DES EXAMENS NATIONAUX'|upper }}</b></h5><hr/>
+            <p>
+                Dans cette partie, l’on va voir comment configurer les examens nationaux dans le système.
+                Et cette manipulation ce fait sur l’interface suivante.
+            </p>
+            <img class="materialboxed responsive-img card" width="1291" height="483" style="border: 5px;" src="{% static 'img/sco-img/sco-exmnat-config.png' %}">
+            <sup>Interface des configurations des examens nationaux</sup>
+
+            <h6 id="annee_aca"><b>(1)	Année Académique</b></h6><hr>
+            <p>
+                C’est le point de départ de la configuration et permet de choisir l’année académique dans laquelle les configurations seront effectuées.
+            </p>
+
+            <h6 id="filtre"><b>(2)	Filtre « Niveau & Option »</b></h6><hr>
+            <p>
+                Etant donné que les examens sont créés en fonction d’un niveau et d’une option. Ce filtre permet donc de trier les examens en fonction de ces derniers.
+                Il est à noter que le choix de du niveau activera le bouton <b>« <i>Nouvel Examen</i> »</b> et affichera dans le tableau l’examen concerné s’il en existe.
+            </p>
+
+            <h6 id="btn_new"><b>(3)	Bouton « <i>Nouvel Examen</i> »</b></h6><hr>
+            <p>
+                Ce bouton permet l’ajout d’un nouvel examen pour l’option et le niveau concerné en ouvrant la fenêtre suivante.
+            </p>
+            <img class="materialboxed responsive-img card" width="335" height="212" style="border: 5px;" src="{% static 'img/sco-img/sco-exmnat-config-add.png' %}">
+            <sup>Ajout d'un Examen</sup>
+            <p>
+                Après avoir entré les informations, on clique sur le bouton <b>« Enregistrer »</b>.
+                Cette action va enregistrer l’examen et mettre à jour le tableau <b>(4)</b>.
+            </p>
+
+            <h6 id="tbl_exm"><b>(4)	Le Tableau d’Examen</b></h6><hr>
+            <p>
+                Ce tableau affiche l’examen correspondant à l’option et au niveau choisi.
+            </p>
+            <img class="materialboxed responsive-img card" width="986" height="90" style="border: 5px;" src="{% static 'img/sco-img/sco-exmnat-config-tbl.png' %}">
+            <sup>Tableau des Examens</sup>
+            <p>
+                Le clic sur le lien <b>« Editer »</b>, permet de mettre à jour l’examen en ouvrant la fenêtre d’ajout préalablement rempli.
+            </p>
+
+            <h6 id="etat_exm"><b>(5)	Etats sur les Examens Nationaux</b></h6><hr>
+            <img class="materialboxed responsive-img card" width="1002" height="489" style="border: 5px;" src="{% static 'img/sco-img/sco-exmnat-config-print.png' %}">
+            <sup>Impression des états</sup>
+            <p>
+                Cette interface permet d’imprimer la liste des étudiants inscrits aux examens nationaux par classe.
+            </p>
+            <p>
+                Cette impression peut se faire par Classe, par spécialité ou sur une Période.
+            </p>
+
+            <h5 id="insc_exm"><b style="color: #686868;">{{ 'INSCRIPTION AUX EXAMENS NATIONAUX'|upper }}</b></h5><hr/>
+            <p>
+                Cette partie a pour principal objectif l’inscription des étudiants aux examens correspondants à leur classe.
+                Et cela s’effectue sur l’interface suivante.
+            </p>
+            <img class="materialboxed responsive-img card" width="1283" height="612" style="border: 5px;" src="{% static 'img/sco-img/sco-insc_exmnat.png' %}">
+            <sup>Interface de gestion des examens nationaux</sup>
+
+            <h6 id="annee_aca2"><b>(1)	Année Académique</b></h6><hr>
+            <p>
+                C’est le point de départ et permet de choisir l’année académique dans laquelle on va pouvoir inscrire un étudiant à un examen.
+                Le choix de la classe active le filtre de <b>« l’Ecole/Cycle/Classe (2) »</b> (<b  style="size: 20px;color: #c00000;">encadré en rouge</b>).
+            </p>
+
+            <h6 id="ec_cy"><b>(2)	Ecole / Cycle / Classe</b></h6><hr>
+            <p>
+                Ce bloc permet de choisir classe dans laquelle  on veut trouver l’étudiant à inscrire.
+                Le choix de la classe affichera l’examen concerné dans le tableau <b>(3)</b> (<b  style="size: 20px;color: #ffc000;">encadré en jaune</b>).
+            </p>
+            <p>
+                <b><u>NB :</u></b> Seul les classes pour lesquelles un examen (les classes dont pour l’option et le niveau un examen a été créé) existe seront listées.
+            </p>
+
+            <h6 id="exm"><b>(3)	Examen</b></h6><hr>
+            <p>
+                Ce tableau affiche l’examen concerné par la classe.
+            </p>
+            <img class="materialboxed responsive-img card" width="922" height="80" style="border: 5px;" src="{% static 'img/sco-img/sco-insc_exmnat-exm.png' %}">
+            <sup>Examen Correspondant à la classe</sup>
+            <p>
+                Le clic sur le lien <b>« Choisir »</b> de l’examen, chargera les tableaux <b>(4)</b> et <b>(5)</b>.
+            </p>
+
+            <h6 id="l_etd"><b>(4)	Liste des étudiants inscrits dans la classe</b></h6><hr>
+            <p>
+                Ce tableau liste les étudiants inscrits dans la classe et ayant payé l’intégralité de leur frais de scolarité et n’étant pas encore inscrit leur examen.
+            </p>
+            <img class="materialboxed responsive-img card" width="924" height="248" style="border: 5px;" src="{% static 'img/sco-img/sco-insc_exmnat-list-etd.png' %}">
+            <sup>Etudiant de la classe non inscrit à l'examen</sup>
+            <p>
+                Le clic sur le lien <b>« Inscrire à l’examen »</b> d’un étudiant permet d’ouvrir la fenêtre d’inscription de l’étudiant à l’examen.
+            </p>
+            <img class="materialboxed responsive-img card" width="469" height="278" style="border: 5px;" src="{% static 'img/sco-img/sco-insc_exmnat-det.png' %}">
+            <sup>fenêtre d'inscription d'un étudiant à l'examen</sup>
+            <p>
+                Dans laquelle on saisit le matricule de l’étudiant avant de valider. Cette action enregistrera l’inscription et mettra à jour les tableaux <b>(4)</b> et <b>(5)</b>.
+                L’inscription concernée devra être validé à la caisse pour être actif.
+            </p>
+            <p>
+                <b><u>NB :</u></b> le montant de l’inscription peut varier si le délai du paiement est atteint ou pas.
+            </p>
+
+            <h6 id="l_etd_exm"><b>(5)	Liste des étudiants de la classe inscrits à l’examen</b></h6><hr>
+            <p>
+                Ce tableau liste les étudiants  de la classe ayant souscrit à l’examen sélectionner.
+            </p>
+            <img class="materialboxed responsive-img card" width="923" height="121" style="border: 5px;" src="{% static 'img/sco-img/sco-insc_exmnat-l-etd.png' %}">
+            <sup>étudiants d'une classe inscrit à un examen</sup>
+            <p>
+                <b><u>NB :</u></b> si l’inscription n’a pas encore été validée par la caisse on peut toujours l’annuler à travers le lien <b>« Annuler l’inscription »</b> sur un étudiant qui annulera une inscription après confirmation.
+            </p>
+
+        </div>
+    </div>
+    <div class="row">
+      <b>
+          <div class="col s3"></div>
+          <div class="col s3"><a href="{%   url 'sco_gest_bourse_rec' %}">{{ '5. GESTION DES BOURSES ET REDUCTIONS'|upper }}</a></div>
+          <div class="col s3"><a style="color: #2A4E7F;" class="disabled">{{ '6. GESTION DES EXAMENS NATIONAUX'|upper }}</a></div>
+          <div class="col s3"><a href="{%   url 'sco_gest_exm_nat' %}">{{ '7. '|upper }}</a></div>
+      </b>
+    </div>
+{% endblock %}
