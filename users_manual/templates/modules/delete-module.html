@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Suppression d'un Module{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s10">
+            {% block details %}
+                {% block breadcrumb %}
+                        <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
+                        <a style="color: #686868;" href="#" class="disabled breadcrumb">{{ "SUPPRESSION D'UN MODULE" }}</a>
+                {% endblock %}
+            {% endblock %}
+            <h4><b style="color: #2a4e7f;"> {{ "SUPPRESSION DU MODULE" }}</b></h4>
+            <hr/>
+            <div class="row">
+                <form  class="blue-text text-darken-4 col s10" action="{% url 'delete-module' id %}" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <h4 class="red-text"> Êtes-vous sûr ?</h4>
+                    </div>
+                    <div class="row">
+                        <p style="color: #263238"> Voulez-vous vraiment supprimer le module <b>{{ module.intitule }}</b> ?</p>
+                    </div>
+                    <div class="row">
+                        <div class="col s3">
+                            <button class="btn waves-effect red white-text" type="submit">Oui, j'en suis sûr <i class="material-icons right">delete</i></button>
+                        </div>
+                        <div class="col s5">
+                            <a href="{% url 'morpheus_doc' %}" class="btn waves-effect grey white-text"> Non, revenir à la page précédente<i class="material-icons right">keyboard_backspace</i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

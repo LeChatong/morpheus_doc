@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Administration | Module{% endblock %}
+{% block breadcrumb %}
+
+
+{% endblock %}
+{% block body %}
+    {% load static %}
+    <form action="{%  url 'add-module' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="button" type="submit" value="submit">
+    </form>
+{% endblock %}

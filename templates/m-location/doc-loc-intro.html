@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Documentation Location | Introduction{% endblock %}
+{% block breadcrumb %}
+    <b>
+       <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
+        <a style="color: #2a4e7f;" href="{% url 'loc_acceuil' %}" class="breadcrumb">{{ 'Morpheus Location'|upper }}</a>
+        <a style="color: #686868;"  href="#" class="disabled breadcrumb">{{ 'Introduction'|upper }}</a>
+    </b>
+
+{% endblock %}
+{% block body %}
+    {% load static %}
+    <div class="row">
+        <div class="col s3 left">
+            <div style="position: fixed;">
+                <a style="color: #2a4e7f;" href="#"><b>{{ '...'|upper }}</b></a><br/>
+                <a style="color: #2a4e7f;" href="#"><b>{{ '...'|upper }}</b></a><br/>
+            </div>
+        </div>
+        <div style="text-align: justify" class="col s9">
+            <div style="text-align: justify">
+                <h4><b style="color: #2a4e7f;">{{ 'Introduction Morpheus Location'|upper }}</b></h4><hr/>
+                <h5 id="ap"><b style="color: #686868;">{{ 'à PROPOS DE MORPHEUS / LOCATION'|upper }}</b></h5><hr/>
+                <p>
+                    Le Module <b style="color: #5f93ee;">LOCATION</b> de <b>MORPHEUS</b> est celui centré sur la gestion des cités universitaires de l’institut,
+                    c’est un processus qui peut être présenté comme suit :
+                </p>
+                <ul>
+                    <ol>1-	Configuration des cités universitaires et de tous ce qui tourne autours (locaux de cité, meubles, services, Template).</ol>
+                    <ol>2-	Création des locataires et paiement des frais de location.</ol>
+                    <ol>3-	Création des contrats de locations.</ol>
+                    <ol>4-	Génération de factures de paiements, paiement et remboursements.</ol>
+                </ul>
+                <p>
+                    Apprendre à utiliser ce module  n’a rien de compliqué, mais cela suppose de bien comprendre les termes, les concepts et les méthodes employés dans ce Manuel de l’utilisateur.
+                    Nous vous conseillons d’étudier ce manuel en détail avant d’utiliser le module.
+                </p>
+                <p>
+                    Ce manuel d’utilisateur offre une vue d’ensemble des caractéristiques de l’application et donne des instructions pas à pas pour la réalisation de différentes tâches.
+                </p>
+
+                <h5 id="ap"><b style="color: #686868;">{{ 'Tableau de Bord'|upper }}</b></h5><hr/>
+                <p>
+                    C’est la page d’accueil de la plateforme. Cette page présente tous les modules de L’application <b>MORPHEUS</b>.
+                    Mais dans notre cas celui qui nous intéresse est le module location
+                </p>
+                <img class="materialboxed responsive-img card" width="1906" height="440"  style="border: 5px;" src="{% static 'img/loc-img/acc-morpheus.png' %}">
+                <sup>Page d'Accueil Morpheus</sup>
+                <p>
+                    La page suivante présente l’ensemble des sous modules de la partie location.
+                </p>
+                <img class="materialboxed responsive-img card" width="1212" height="310"  style="border: 5px;" src="{% static 'img/loc-img/loc-acc.png' %}">
+                <sup>Page d'Accueil du module Location</sup>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <b>
+            <div class="col s3"></div>
+            <div class="col s3"><a href="{%   url 'loc_acceuil' %}">{{ 'Acceuil'|upper }}</a></div>
+            <div class="col s3"><a style="color: #2A4E7F;" class="disabled">{{ '1. Introduction Morpheus Location'|upper }}</a></div>
+            <div class="col s3"><a href="{%   url 'loc_config' %}">{{ '2. CONFIGURATION DU MODULE'|upper }}</a></div>
+        </b>
+    </div>
+{% endblock %}

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Documentation Scolarité | Paiements{% endblock %}
+{% block title %}Documentation Scolarité | Examens Nationaux{% endblock %}
 {% block breadcrumb %}
     <b>
         <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col s3">
             <div style="position: fixed;">
-                <a style="color: #2a4e7f;" href="#bourse"><b>{{ 'CONFIGURATION DES EXAMENS NATIONAUX'|upper }}</b></a><br/>
+                <a style="color: #2a4e7f;" href="#exam"><b>{{ 'CONFIGURATION DES EXAMENS NATIONAUX'|upper }}</b></a><br/>
                 <a style="color: #686868; padding-left: 10px;" href="#annee_aca">(1)    Année Académique</a><br/>
                 <a style="color: #686868; padding-left: 10px;" href="#filtre">(2)	Filtre « Niveau & Option »</a><br/>
                 <a style="color: #686868; padding-left: 10px;" href="#btn_new">(3)	Bouton « <i>Nouvel Examen</i> »</a><br/>
@@ -26,10 +26,18 @@
                 <a style="color: #686868; padding-left: 10px;" href="#exm">(3)	Examen</a><br/>
                 <a style="color: #686868; padding-left: 10px;" href="#l_etd">(4)	Liste des étudiants inscrits dans la classe</a><br/>
                 <a style="color: #686868; padding-left: 10px;" href="#l_etd_exm">(5)	Liste des étudiants de la classe inscrits à l’examen</a><br/>
+
+                <a style="color: #2a4e7f;" href="#adm_exm"><b>{{ 'ADMISSION AUX EXAMENS NATIONAUX'|upper }}</b></a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#select_exm">(1)	Choix de l'Examen</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#list_etd">(2)	Liste des étudiants</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#btn_check">(3)	Le Bouton " <i>Tout Cocher / Décocher</i> "</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#link_save_adm">(4)	Le Lien " <i>ENREGISTRER LES ADMIS</i> "</a><br/>
+
+                <a style="color: #2a4e7f;" href="#dip"><b>{{ 'DIPLOMATION'|upper }}</b></a><br/>
             </div>
         </div>
         <div style="text-align: justify" class="col s9">
-            <h4><b style="color: #2a4e7f;">{{ 'GESTION DES EXAMENS NATIONAUX'|upper }}</b></h4>
+            <h4><b style="color: #2a4e7f;">{{ 'GESTION DES EXAMENS NATIONAUX'|upper }}</b></h4><hr/>
             <p>
                 Dans ce chapitre, nous verrons principalement comment créer les examens nationaux dans le système et comment inscrire des étudiants à ceux-ci.
             </p>
@@ -37,7 +45,7 @@
                 <b><u>NB :</u></b> Il ne s’agit en aucun cas d’organiser des examens, ni d’avoir des notes des étudiants pour ces examens.
             </p>
 
-            <h5 id=""><b style="color: #686868;">{{ 'CONFIGURATION DES EXAMENS NATIONAUX'|upper }}</b></h5><hr/>
+            <h5 id="exam"><b style="color: #686868;">{{ 'CONFIGURATION DES EXAMENS NATIONAUX'|upper }}</b></h5><hr/>
             <p>
                 Dans cette partie, l’on va voir comment configurer les examens nationaux dans le système.
                 Et cette manipulation ce fait sur l’interface suivante.
@@ -149,6 +157,66 @@
                 <b><u>NB :</u></b> si l’inscription n’a pas encore été validée par la caisse on peut toujours l’annuler à travers le lien <b>« Annuler l’inscription »</b> sur un étudiant qui annulera une inscription après confirmation.
             </p>
 
+            <h5 id="adm_exm"><b style="color: #686868;">{{ 'ADMISSION AUX EXAMENS NATIONAUX'|upper }}</b></h5><hr/>
+            <p>
+                Cette interface permet principalement, d'enregistrer les étudiants (inscrits aux examens nationaux) ayant reussi leur examens.
+            </p>
+            <img class="materialboxed responsive-img card" width="1251" height="491" style="border: 5px;" src="{% static 'img/sco-img/sco-exmnat-admis.png' %}">
+            <sup>Interface d'Admission des étudiants aux examens</sup>
+
+            <h6 id="select_exm"><b>(1)	Choix de l'Examen</b></h6><hr>
+            <img class="materialboxed responsive-img card" width="447" height="142" style="border: 5px;" src="{% static 'img/sco-img/sco-exmnat-admis-exm.png' %}">
+            <sup>Choix d'un Examen</sup>
+            <p>
+                Ce bloc permet de Choisir l'examen que l'on souhaite manipuler. Les examens sont donnés en fonction de l'année académique.
+            </p>
+
+            <h6 id="list_etd"><b>(2)	Liste des étudiants</b></h6><hr>
+            <img class="materialboxed responsive-img card" width="780" height="304" style="border: 5px;" src="{% static 'img/sco-img/sco-exmnat-admis-listetd.png' %}">
+            <sup>Liste des étudiants inscrit à l'examen</sup>
+            <p>
+                Ce tableau liste tout les étudiants inscrits à l'examen choisi avec leur matricule pour l'examen.
+            </p>
+            <p>
+                La Case à cocher permet de différencier les étudiants admis à l'examen et ceux qui ne le sont pas. En effet, ceux admis on leur case cocher et
+                ceux qui n'ont pas reussi on leur case vide.
+            </p>
+
+            <h6 id="btn_check"><b>(3)	Le Bouton " <i>Tout Cocher / Décocher</i> "</b></h6><hr>
+            <p>
+                Ce bouton permet de tout cocher ou tout décocher les éléments du tableau pour un éventuel traitement.
+            </p>
+
+            <h6 id="link_save_adm"><b>(4)	Le Lien " <i>ENREGISTRER LES ADMIS</i> "</b></h6><hr>
+            <img class="responsive-img card" width="260" height="35" style="border: 5px;" src="{% static 'img/sco-img/link-save-adm.png' %}">
+            <p>
+                Ce lien permet d'enregistrer les étudiants sélectionnés comme étant admis à l'examen après confirmation.
+            </p>
+            <img class="materialboxed responsive-img card" width="637" height="98" style="border: 5px;" src="{% static 'img/sco-img/sco-exmnat-admis-confirm.png' %}">
+            <sup>Confirmation de l'enregistrement des admis</sup>
+
+            <h5 id="dip"><b style="color: #686868;">{{ 'Diplomation'|upper }}</b></h5><hr/>
+            <img class="materialboxed responsive-img card" width="1249" height="363" style="border: 5px;" src="{% static 'img/sco-img/sco-dip.png' %}">
+            <sup>Interface de diplomation</sup>
+            <p>
+                Le but de cet interface est d'imprimer les certifcats de reussite des étudiants ayant reussi leurs examens, et ceux-ci sont donnés par
+                <b>PROMOTION</b> et <b>EXAMEN</b>
+            </p>
+            <img class="materialboxed responsive-img card" width="385" height="111" style="border: 5px;" src="{% static 'img/sco-img/sco-dip-filtre.png' %}">
+            <sup>Filtre de recherche par Promotion et Examen</sup>
+
+            <p>
+                Après le Choix de l'Examen les étudiants concernés sont listés dans le tableau suivant :
+            </p>
+            <img class="materialboxed responsive-img card" width="780" height="177" style="border: 5px;" src="{% static 'img/sco-img/sco-dip-listetd.png' %}">
+            <sup>Etudiants Admis</sup>
+            <p>
+                Le Bouton " <b><i>Impression des Certificats de Reussite</i></b> " permet d'imprimer les certificats de reussite de tout les étudiants concernés, en français
+                et en anglais.
+            </p>
+            <img class="materialboxed responsive-img card" width="244" height="123" style="border: 5px;" src="{% static 'img/sco-img/sco-dip-langue.png' %}">
+            <sup>Choix de la langue d'impression</sup>
+
         </div>
     </div>
     <div class="row">
@@ -156,7 +224,7 @@
           <div class="col s3"></div>
           <div class="col s3"><a href="{%   url 'sco_gest_bourse_rec' %}">{{ '5. GESTION DES BOURSES ET REDUCTIONS'|upper }}</a></div>
           <div class="col s3"><a style="color: #2A4E7F;" class="disabled">{{ '6. GESTION DES EXAMENS NATIONAUX'|upper }}</a></div>
-          <div class="col s3"><a href="{%   url 'sco_gest_exm_nat' %}">{{ '7. '|upper }}</a></div>
+          <div class="col s3"><a href="{%   url 'sco_gest_moratoire' %}">{{ '7. GESTION DES MORATOIRES'|upper }}</a></div>
       </b>
     </div>
 {% endblock %}

@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% block title %}Documentation Scolarité | Moratoires{% endblock %}
+{% block breadcrumb %}
+    <b>
+        <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
+        <a style="color: #2a4e7f;" href="{% url 'sco_accueil' %}" class="breadcrumb">{{ 'Morpheus Scolarité'|upper }}</a>
+        <a style="color: #686868;"  href="#" class="disabled breadcrumb">{{ 'GESTION DES MORATOIRES'|upper }}</a>
+    </b>
+
+{% endblock %}
+{% block body %}
+    {% load static %}
+    <div class="row">
+        <div class="col s3">
+            <div style="position: fixed;">
+                <a style="color: #2a4e7f;" href="#config_mo"><b>{{ 'CONFIGURATION DES MORATOIRES'|upper }}</b></a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#model_mo">(1)	Modèles de moratoires</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#etd_blocked">(2)	Etudiants Interdits de Moratoire</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#etats">(3)	Etats</a><br/>
+
+                <a style="color: #2a4e7f;" href="#gest_mo"><b>{{ 'GESTION DES MORATOIRES'|upper }}</b></a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#annee_aca">(1)	Année Académique</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#z_search">(2)	Zone de recherche</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#tbl_etd">(3)	Tableau d’étudiants</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#tbl_cla">(4)	Tableau des classes</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#tbl_par">(5)	Tableau des Parents</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#btn_mo_exp">(6)	Bouton « <i>Moratoire Express</i> »</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#btn_add_mo">(7)	Bouton « <i>Ajouter Des Moratoires</i> »</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#tbl_mo">(8)	Tableau de moratoires</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#infos_etd">(9)	Informations Etudiant</a><br/>
+                <a style="color: #686868; padding-left: 10px;" href="#recap_paie">(10)	Lien « <i>Récapitulatif Paiement</i> »</a><br/>
+            </div>
+        </div>
+        <div style="text-align: justify" class="col s9">
+            <h4><b style="color: #2a4e7f;">{{ 'GESTION DES MORATOIRES'|upper }}</b></h4><hr/>
+            <p>
+                Dans ce chapitre nous verrons comment manipuler les moratoires, de leurs configurations jusqu’à l’attribution de ceux-ci aux étudiants.
+            </p>
+            <h5 id="config_mo"><b style="color: #686868;">{{ 'CONFIGURATION DES MORATOIRES'|upper }}</b></h5><hr/>
+            <p>
+                La configuration des moratoires s’effectue dans l’interface suivante.
+            </p>
+            <img class="materialboxed responsive-img card" width="1182" height="486" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-config.png' %}">
+            <sup>Interface de configuration des moratoires</sup>
+            <p>
+                Comme on peut le voir cette interface est repartie en 3 parties que nous allons détaillées dans la suite.
+            </p>
+            <h6 id="model_mo"><b>(1)	Modèles de moratoires</b></h6><hr>
+            <p>
+                Les modèles de moratoires sont ceux qu’on utilise pour attribuer les moratoires aux étudiants.
+                Ils sont créés pour une option et un niveau précis et définissent à quel moment les étudiants inscrits dans les classes dont l’option et le niveau choisi ne peuvent plus prendre de moratoire à travers une date limite.
+                La mise en place des modèles se fait sur l’interface suivante.
+            </p>
+            <img class="materialboxed responsive-img card" width="910" height="335" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-modele.png' %}">
+            <sup>Modèle de moratoire</sup>
+            <p style="color: #2a4e7f;"><i>Le Filtre des modèles de moratoires</i></p>
+            <p>
+                Le filtre des modèles (encadré en jaune) permet de filtrer les différents modèles de moratoires dans le tableau (encadré en bleu) en fonction
+                de l’école, le cycle, la filière, la spécialité, l’option et le niveau. Après avoir choisi le niveau le bouton « Nouveau Modèle »
+                pour permettre un nouvel ajout.
+            </p>
+            <p style="color: #2a4e7f;"><i>Le Bouton « <b>Nouveau Modèle</b> »</i></p>
+            <p>
+                Le clic sur le bouton « <b style="color: #18c017;">Nouveau Modèle</b> » (encadré en vert) ouvrira la fenêtre suivante.
+            </p>
+            <img class="materialboxed responsive-img card" width="481" height="177" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-add-modele.png' %}">
+            <sup>Ajout d'un modèle de moratoire</sup>
+            <p>
+                Dans laquelle on rentre l’intitulé et la date limite avant d’enregistrer.
+                On n’a plus besoin de préciser le niveau et l’option puisqu’ils ont déjà été choisis dans le filtre.
+            </p>
+            <p style="color: #2a4e7f;"><i>Le tableau des modèles</i></p>
+            <p>
+                Ce tableau (<b style="color: #5f93ee;">encadré en bleu</b>) permet de lister les modèles de moratoires en
+                fonction du choix effectué dans les champs du filtre (<b style="color: #ffc000;">encadré en jaune</b>).
+            </p>
+
+            <h6 id="etd_blocked"><b>(2)	Etudiants Interdits de Moratoire</b></h6><hr>
+            <p>
+                Cette partie permet de priver un étudiant de moratoire pour une raison précise.
+            </p>
+            <img class="materialboxed responsive-img card" width="910" height="335" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-blocked.png' %}">
+            <sup>Etudiants interdits de moratoire</sup>
+            <p style="color: #2a4e7f;"><i>Le Bouton « <b>Ajouter un Etudiant à la liste</b> »</i></p>
+            <p>
+                Le clic sur le bouton « <i><b>Ajouter un Etudiant à la liste</b></i> » la fenêtre dans laquelle on va choisir l’étudiant.
+            </p>
+            <img class="materialboxed responsive-img card" width="501" height="209" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-select-etd.png' %}">
+            <sup>Choix d'un étudiant à bloquer</sup>
+            <p>
+                Après avoir fait la recherche de l’étudiant, le clic sur le lien « <b>Choisir</b> » de l’étudiant ouvre une deuxième interface.
+            </p>
+            <img class="materialboxed responsive-img card" width="470" height="264" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-motif-block.png' %}">
+            <sup>Motif du blocage</sup>
+            <p>
+                Dans laquelle on renseigne le <i>motif</i> et l’état avant d’enregistrer.
+                Cette action ajoutera l’étudiant choisi dans le tableau (<b style="color: #5f93ee;">encadré en bleu</b>).
+            </p>
+            <img class="materialboxed responsive-img card" width="892" height="140" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-etd-blocked.png' %}">
+            <sup>étudiants bloqué</sup>
+            <p>
+                Le clic lien « <b>Editer</b> »  d’un étudiant permet d’ouvrir la fenêtre d’édition du blocage d’un étudiant.
+                Permettant ainsi de changer son état.
+            </p>
+            <img class="materialboxed responsive-img card" width="470" height="264" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-edit-block.png' %}">
+            <sup>Edition d'un motif</sup>
+
+            <h6 id="etats"><b>(3)	Etats</b></h6><hr>
+            <p>
+                Cette partie permet d’imprimer la liste des moratoires (Réglé, non réglé ou les deux) des étudiants par classe ou sur une période.
+            </p>
+            <img class="materialboxed responsive-img card" width="910" height="586" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-printed.png' %}">
+            <sup>Interface d'Impression des Etats</sup>
+
+
+            <h5 id="gest_mo"><b style="color: #686868;">{{ 'GESTION DES MORATOIRES'|upper }}</b></h5><hr/>
+            <p>
+                Dans cette partie nous verrons comment fonctionne l’attribution des moratoires aux étudiants.
+                Ce traitement s’effectue sur l’interface suivante.
+            </p>
+            <img class="materialboxed responsive-img card" width="1293" height="461" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-gest.png' %}">
+            <sup>Interface de gestion des moratoires</sup>
+            <p>
+                Nous allons par la suite expliquer le fonctionnement de chaque composant de l’interface grâce aux numérotations.
+            </p>
+
+            <h6 id="annee_aca"><b>(1)	Année Académique</b></h6><hr>
+            <p>
+                Le choix de l’année académique permet de déterminer dans quelle année on va travailler.
+                C’est le point de départ des manipulations.
+            </p>
+
+            <h6 id="z_search"><b>(2)	Zone de recherche</b></h6><hr>
+            <p>
+                Cette zone permet de rechercher un étudiant (à travers son nom ou son prénom) inscrit pour le compte de l’année (<b>1</b>) choisi et permet ainsi un accès direct à l’étudiant.
+                Le résultat de la recherche est  affiché dans  le tableau d’étudiant (<b>3</b>) (<b style="color: #c00000;">encadré en rouge</b>).
+            </p>
+
+            <h6 id="tbl_etd"><b>(3)	Tableau d’étudiants</b></h6><hr>
+            <img class="materialboxed responsive-img card" width="370" height="94" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-listetd.png' %}">
+            <sup>Liste des étudiants issus de la recherche</sup>
+            <p>
+                Ce tableau affiche la liste des étudiants après avoir effectué la recherche (<b>2</b>). Le clic sur le lien « <b>Choisir</b> » d’un étudiant
+                va charger la liste des classes dans lesquelles il est inscrit (<b>4</b>)
+                ainsi que le tableau de ses parents (<b>5</b>) et aussi les informations concernant sa scolarité dans le bloc encadré en orange (<b>9</b>).
+            </p>
+            <p>
+                <b><u>NB :</u></b> Si l’étudiant est bloqué aucun chargement ne sera effectué et un message apparaitra sur le bloc encadré en orange (9).
+            </p>
+
+            <h6 id="tbl_cla"><b>(4)	Tableau des classes</b></h6><hr>
+            <img class="materialboxed responsive-img card" width="372" height="54" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-listcla.png' %}">
+            <sup>Classe de l'étudiant</sup>
+            <p>
+                Ce tableau se charge lorsqu’un étudiant est choisi et affiche la liste des classes dans lesquelles il est inscrit.
+                Le clic sur le lien « <b>Choisir</b> » d’une classe charge les moratoires que
+                l’étudiant a pris pour cette classe dans le tableau (<b>8</b>) et active le bouton « <b style="color: #5f93ee;"><i>Ajouter un moratoire</i></b> ».
+            </p>
+
+            <h6 id="tbl_par"><b>(5)	Tableau des Parents</b></h6><hr>
+            <img class="materialboxed responsive-img card" width="810" height="80" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-listpar.png' %}">
+            <sup>Parents de l'étudiant</sup>
+            <p>
+                Ce tableau liste les parents de l’étudiant choisi. Le clic sur le lien « <b>Choisir</b> »
+                va activer le bouton « <b style="color: #5f93ee;"><i>Ajouter Des Moratoires</i></b> » (Il s’agit ici des moratoires accordé à un parent).
+            </p>
+            <p>
+                <b><u>NB :</u></b> Si aucun parent ne s’affiche, c’est qu’on en n’a pas enregistré pour l’étudiant concerné.
+            </p>
+
+            <h6 id="btn_mo_exp"><b>(6)	Bouton « <i>Moratoire Express</i> »</b></h6><hr>
+            <p>
+                Ce bouton permet d’ouvrir la fenêtre suivante qui permet l’enregistrement d’un nouveau moratoire.
+            </p>
+            <img class="materialboxed responsive-img card" width="469" height="284" style="border: 5px;" src="{% static 'img/sco-img/sco-morart-add-mo.png' %}">
+            <sup>Fenêtre d'ajout d'un moratoire</sup>
+            <p>
+                Il suffit de renseigner les informations du moratoire et enregistrer. Le moratoire sera par la suite ajouter dans le tableau (<b>8</b>).
+            </p>
+            <p>
+                <b><u>NB :</u></b> Si pour la classe choisie un modèle de moratoire n’a pas été créé le message d’erreur suivant sera affiché.
+            </p>
+            <img class="materialboxed responsive-img card" width="217" height="262" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-error.png' %}">
+            <sup>Modèle de moratoire inexistant pour la filière</sup>
+
+            <h6 id="btn_add_mo"><b>(7)	Bouton « <i>Ajouter Des Moratoires</i> »</b></h6><hr>
+            <p>
+                Ces moratoires concernent un parent.
+            </p>
+            <p>
+                Le clic sur ce bouton ouvre la fenêtre suivante, qui permet la création de plusieurs moratoires instantanément.
+            </p>
+            <img class="materialboxed responsive-img card" width="759" height="338" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-mult.png' %}">
+            <sup>Moratoire Multiple</sup>
+            <p>
+                A chaque fois que le l’on entre les informations d’un moratoire et clic sur le bouton « <b>Ajouter</b> » une ligne concernant ce moratoire
+                est ajoutée dans le tableau que l’on peut bien évidement retirer à travers le lien « <b>Retirer</b> » sur chaque élément du tableau.
+            </p>
+            <p>
+                Le clic sur le bouton « <b>Enregistrer</b> » enregistrera tous les moratoires du tableau dans l’application et le tableau (<b>8</b>) sera mis à jour.
+                Mais si la fenêtre est fermée aucun moratoire ne sera enregistré.
+            </p>
+
+            <h6 id="tbl_mo"><b>(8)	Tableau de moratoires</b></h6><hr>
+            <p>
+                Ce tableau liste les moratoires de l’étudiant pour la classe choisi.
+            </p>
+            <img class="materialboxed responsive-img card" width="786" height="64" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-listmor.png' %}">
+            <sup>Liste des moratoires</sup>
+            <p>
+                Le clic sur le lien « <b>Détails</b> » permet d’avoir les détails du moratoire choisi sur la fenêtre suivante.
+            </p>
+            <img class="materialboxed responsive-img card" width="434" height="285" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-details.png' %}">
+            <sup>Détails d'un moratoire</sup>
+            <p>
+                Les actions que l’on peut effectuer sur cette fenêtre sont de modifier l’état du paiement (<b>REGLE / NON REGLE</b>) ou le montant donné et enregistrer.
+            </p>
+
+            <h6 id="infos_etd"><b>(9)	Informations Etudiant</b></h6><hr>
+            <p>
+                Ce bloc se contente d’afficher les informations sur la scolarité de l’étudiant avec aussi un message
+                en rouge ou en vert permettant de savoir si l’étudiant peut avoir un moratoire ou pas.
+            </p>
+            <img class="materialboxed responsive-img card" width="330" height="277" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-detailspen.png' %}">
+            <sup>Détails Sur la Pension de l'étudiant</sup>
+
+            <h6 id="recap_paie"><b>(10)	Lien « <i>Récapitulatif Paiement</i> »</b></h6><hr>
+            <p>
+                Ce lien permet d’ouvrir une fenêtre qui  affiche la liste des paiements de l’étudiant au cours de l’année académique choisi.
+            </p>
+            <img class="materialboxed responsive-img card" width="487" height="165" style="border: 5px;" src="{% static 'img/sco-img/sco-morat-recap.png' %}">
+            <sup>Récapitulatif sur les paiements de l’étudiant</sup>
+
+        </div>
+    </div>
+    <div class="row">
+      <b>
+          <div class="col s3"></div>
+          <div class="col s3"><a href="{%   url 'sco_gest_exm_nat' %}">{{ '6. GESTION DES EXAMENS NATIONAUX'|upper }}</a></div>
+          <div class="col s3"><a style="color: #2A4E7F;" class="disabled">{{ '7. GESTION DES MORATOIRES'|upper }}</a></div>
+          <div class="col s3"><a href="{%   url 'sco_gest_etat' %}">{{ '8. GESTION DES ETATS'|upper }}</a></div>
+      </b>
+    </div>
+{% endblock %}

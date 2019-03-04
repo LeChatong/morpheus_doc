@@ -1,0 +1,74 @@
+{% extends 'base-adm.html' %}
+{% block title %}Administration | Ajout d'un Utilisateur{% endblock %}
+{% block breadcrumb %}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div  style="text-align: justify; padding-top: 20px;"  class="col s2">
+            <a href="{% url 'liste-utilisateurs' %}" class="btn-floating btn-large waves-effect waves-light blue darken-4"><i class="material-icons">keyboard_backspace</i></a>
+        </div>
+        <div style="text-align: justify" class="col s10">
+            <h3 class="blue-text text-darken-4">AJOUT D'UN UTILISATEUR</h3>
+            <hr/>
+                {% if error %}
+                    <div class="col s12">
+                        <p class="red-text darken-4">{{ error }}</p>
+                    </div>
+                {% endif %}
+            <div class="row">
+                {% if form_user %}
+                    <form class="blue-text text-darken-4 col s5" action="{% url 'add_utilisateur' %}" method="post">
+                {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field">
+                            <!--<input class="blue-text text-darken-4" id="nomUtilisateur" type="text" name="nomUtilisateur">-->
+                            {{ form_user.nom_utilisateur }}
+                            <label class="blue-text text-darken-4" for="{{ form_user.nom_utilisateur.id_for_label }}">Compte *</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <!--<input class="blue-text text-darken-4" id="mdpUtilisateur" type="password" name="mdpUtilisateur">-->
+                            {{ form_user.mdp_utilisateur }}
+                            <label class="blue-text text-darken-4" for="{{ form_user.mdp_utilisateur.id_for_label }}">Mot de Passe *</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <input class="blue-text text-darken-4" id="comfirmMdpUtilisateur" type="password" name="comfirmMdpUtilisateur">
+                            <label class="blue-text text-darken-4" for="comfirmMdpUtilisateur">Retapez le Mot de Passe *</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <label class="blue-text text-darken-4">
+                                <!--<input id="actifUtilisateur" type="checkbox" name="actifUtilisateur">-->
+                                {{ form_user.actif_utilisateur }}
+                                <span>{{ form_user.actif_utilisateur.label }}</span>
+
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p>
+                            <label class="blue-text text-darken-4">
+                                <!--<input id="estAdmin" type="checkbox" name="estAdmin">-->
+                                {{ form_user.est_admin }}
+                                <span>{{ form_user.est_admin.label }}</span>
+
+                            </label>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <button class="btn waves-effect blue darken-4 white-text" type="submit">Enregistrer <i class="material-icons right">send</i></button>
+                        </div>
+                    </div>
+
+              </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

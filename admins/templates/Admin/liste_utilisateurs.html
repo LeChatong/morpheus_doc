@@ -1,0 +1,76 @@
+{% extends 'base-adm.html' %}
+{% block title %}Administration | Liste des Utilisateurs{% endblock %}
+{% block breadcrumb %}
+    <b>
+       <a style="color: #2a4e7f;" href="#" class="breadcrumb">{{ 'Accueil'|upper }}</a>
+        <a style="color: #686868;"  href="#" class="disabled breadcrumb">{{ 'Liste Utilisateurs'|upper }}</a>
+    </b>
+{% endblock %}
+{% block body %}
+    {% load static %}
+    <div class="row">
+        <div class="col s2"></div>
+        <div style="text-align: justify" class="col s10">
+
+            <h3 class="blue-text text-darken-4">LISTE DES UTILISATEURS</h3>
+            <hr/>
+            <div class="row">
+
+                {% if message %}
+                    <div class="col s12">
+                    {% if message == 'success_add' %}
+                        <p class="green-text darken-4">{{ 'Enregistrement effectué avec succès' }}</p>
+                    {% endif %}
+                    {% if message == 'success_edit' %}
+                        <p class="yellow-text darken-4">{{ 'Mise à Jour effectué avec succès' }}</p>
+                    {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div>
+                <a class="btn waves-effect blue darken-4" href="{% url 'add_utilisateur' %}"> Ajouter<i class="material-icons right">add</i></a>
+            </div>
+            {% if user.values_list.exists %}
+
+                <table class="highlight">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">N°</th>
+                            <th scope="col">Utilisateur</th>
+                            <th scope="col">Crée Le</th>
+                            <th scope="col">Edité Le</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for u in user %}
+                            <tr>
+                                <td scope="row">{{ u.indexes }}</td>
+                                <td>{{ u.nom_utilisateur }}</td>
+                                <td>{{ u.date_sauvegarde }}</td>
+                                <td>{{ u.date_maj }}</td>
+                                <td>
+                                    <a class="btn waves-effect yellow darken-4 modal-trigger" href="{% url 'edit_user' u.id %}"> Editer<i class="material-icons right">edit</i></a> /
+                                    <a class="btn waves-effect red darken-4 modal-trigger" href="#"> Supprimer<i class="material-icons right">delete</i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div style="text-align: center" class="title">
+                    <p>{{ 'Aucune données' }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h4 class="blue-text text-darken-4">Ajout d'un Nouvel Utilisateur</h4>
+
+
+        </div>
+    </div>
+
+{% endblock %}
