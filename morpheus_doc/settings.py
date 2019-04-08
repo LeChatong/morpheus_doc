@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users_manual',
     'admins',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +137,45 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
+LOGIN_URL = '/users_manual/Connexion'
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+#FROALA_INCLUDE_JQUERY = False
+#USE_FROALA_EDITOR = True
+#FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier' ,'code_view', 'colors', 'draggable', 'emoticons',
+#        'entities', 'file', 'font_family', 'font_size', 'fullscreen', 'image_manager', 'image', 'inline_style',
+#        'line_breaker', 'link', 'lists', 'paragraph_format', 'paragraph_style', 'quick_insert', 'quote', 'save', 'table',
+#        'url', 'video')
+
+TINYMCE_DEFAULT_CONFIG = {
+
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 20,
+    'selector': 'textarea',
+    'theme': 'modern',
+    'height': 300,
+    'plugins': '''
+            advlist autolink lists link image charmap print preview hr anchor pagebreak
+            searchreplace wordcount visualblocks visualchars code fullscreen
+            insertdatetime media nonbreaking save table contextmenu directionality
+            template paste textcolor colorpicker textpattern imagetools codesample toc hr
+            anchor pagebreak
+            ''',
+
+    'toolbar1': '''
+        preview bold italic underline | fontselect,
+        fontsizeselect  | alignleft aligncenter |
+        alignright alignjustify  | bullist numlist table |
+        | link | print | forecolor backcolor emoticons | codesample
+        ''',
+
+    'contextmenu': 'formats | link image',
+    'menubar': True,
+    'statusbar': False,
+    'language' : 'fr_FR',
+    'fontsize_formats': '10pt 12pt 14pt 16pt 18pt 20pt 22pt 24pt 26pt 28pt 30pt',
+    'default_font_size':'14pt'
+}

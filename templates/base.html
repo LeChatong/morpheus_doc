@@ -7,45 +7,29 @@
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-    <link rel="SCHORCUT ICON" href="{% static 'img/scolarite.png' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css" media="all" rel="stylesheet" />
+    {{ form.media }}
     <title>{% block title %}MorpheusDocs | Accueil{% endblock %}</title>
 </head>
 <body>
 <main>
-<ul id="dropdown1" class="dropdown-content" style="padding-right: 275px;">
-    {% for mod in modules %}
-      <li>
-          <a style="color: #2A4E7F; padding-right: 275px;" class="" href="{% url 'home-module' mod.code mod.id %}">
-              <i class="material-icons left"><img style="height: 32px; width: 32px;" class="circle left" src="{{ mod.photo.url }}"></i>
-              {{ mod.intitule|upper }}
-          </a>
-      </li>
-  {% endfor %}
-</ul>
-<div id="dropdown2" class="dropdown-content">
-    <ul>
-        {% for mod in modules %}
-          <li>
-              <a style="color: #2A4E7F;" class="" href="{% url 'home-module' mod.code mod.id %}">
-                  <i class="material-icons left"><img style="height: 32px; width: 32px;" class="circle left" src="{{ mod.photo.url }}"></i>
-                  {{ mod.intitule|upper }}
-              </a>
-          </li>
-      {% endfor %}
-    </ul>
-</div>
-
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper" style="background-color: #ffffff;">
-            <a href="#" class="brand-logo right"style="color: #2A4E7F;" >MorpheusDocs.</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'deconnexion' %}" class="brand-logo right"style="color: #2A4E7F;" >Deconnexion</a>
+            {% else %}
+                <a href="#" class="brand-logo right"style="color: #2A4E7F;" >MorpheusDocs.</a>
+            {% endif %}
+
+
             <a href="#" class="brand-logo center"><img src="{% static 'img/logo-top.png' %}" /> </a>
+
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a style="color: #2A4E7F;" href="{% url 'morpheus_doc' %}">{{ 'Accueil'|upper }}</a></li>
-            <li><a style="color: #2A4E7F;" class='dropdown-trigger' href='#!' data-target='dropdown1'>{{ 'Modules'|upper }}</a></li>
 
-            <li><a style="color: #2A4E7F;" href="collapsible.html">{{ 'à propos'|upper }}</a></li>
+            <li><a target="_blank" style="color: #2A4E7F;" href="https://mobile.twitter.com/Labodev">{{ 'à propos'|upper }}</a></li>
           </ul>
         </div>
     </nav>
@@ -53,13 +37,11 @@
 </div>
 <ul class="sidenav" id="mobile-demo">
     <li><a href="{% url 'morpheus_doc' %}">{{ 'Accueil'|upper }}</a></li>
-    <li><a class='dropdown-trigger' href='#!' data-target='dropdown2'>{{ 'Modules'|upper }}</a></li>
-    <li><a href="{% url 'morpheus_doc' %}">{{ 'à propos'|upper }}</a></li>
+    <li><a target="_blank" href="https://mobile.twitter.com/Labodev">{{ 'à propos'|upper }}</a></li>
 </ul>
 
 
     <div class="row" style="padding-bottom: 20px; padding-left: 15px; padding-right: 15px; text-align: justify;">
-
 
         {% block body %}
             <div class="row">
@@ -75,7 +57,10 @@
                         MODULES MORPHEUS
 
                     </h3>
-                    <a title="Nouveau Module" class="green-text text-darken-1" href="{% url 'add-module' %}">NOUVEAU MODULE<i class="material-icons left">add_circle</i></a>
+                    {% if user.is_authenticated %}
+                        <a title="Nouveau Module" class="green-text text-darken-1" href="{% url 'add-module' %}">NOUVEAU MODULE<i class="material-icons left">add_circle</i></a>
+                    {% endif %}
+
                     <div style="padding-left: 15px;">
                     {% if modules.values_list.exists %}
                         <table class="highlight">
@@ -92,12 +77,15 @@
                                         </a>
                                     </h4>
                                 </td>
-                                <td>
-                                    <a href="{% url 'edit-module' mod.id %}" class="yellow-text text-darken-4">EDITER<i class="material-icons left">edit</i></a>
-                                </td>
-                                <td>
-                                    <a href="{% url 'delete-module' mod.id %}" class="red-text text-darken-4">SUPPRIMER<i class="material-icons left">delete</i></a>
-                                </td>
+                                {% if user.is_authenticated %}
+                                    <td>
+                                        <a href="{% url 'edit-module' mod.id %}" class="yellow-text text-darken-4">EDITER<i class="material-icons left">edit</i></a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'delete-module' mod.id %}" class="red-text text-darken-4">SUPPRIMER<i class="material-icons left">delete</i></a>
+                                    </td>
+                                {% endif %}
+
                             </tr>
                         {% endfor %}
                     </table>
@@ -117,7 +105,7 @@
     <footer class="page-footer" style="background-color: #eaeaea;position: fixed; bottom: 0; left: 0; right: 0; padding-top: 5px;">
     <div class="footer-copyright">
         <div class="container center" style="color: #2A4E7F;">
-        © 2018 Copyright MOPRHEUS / SEED 2018
+        © 2018 Copyright MOPRHEUS / SEED 2019
         </div>
     </div>
 </footer>
@@ -125,20 +113,18 @@
 </main>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="{% static 'js/materialize.js'  %}"></script>
-
     <!--<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=your_API_key"></script>
     <script>
       tinymce.init({
         selector: '#id_contenu'
       });
-    </script>-->
+    </script>
 
-    <script type="text/javascript" src="{% static 'js/tinymce/tinymce.min.js'  %}"></script>
-    <script type="text/javascript" src="{% static 'js/tinymce/jquery.tinymce.min.js'  %}"></script>
+
     <script>
         tinymce.init({
             selector: 'textarea',
-            height: 200,
+            height: 300,
             theme: 'modern',
             plugins: [
                 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
@@ -149,16 +135,8 @@
             toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
             toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
             image_advtab: true,
-            templates: [
-                {title: 'Test template 1', content: 'Test 1'},
-                {title: 'Test template 2', content: 'Test 2'}
-            ],
-            content_css: [
-                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-                '//www.tinymce.com/css/codepen.min.css'
-            ]
         });
-    </script>
+    </script>-->
 
     <script>
         $(document).ready(function(){

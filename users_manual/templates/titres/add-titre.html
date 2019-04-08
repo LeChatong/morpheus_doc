@@ -10,7 +10,7 @@
                 {% block breadcrumb %}
                         <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
                         <a style="color: #2a4e7f;" href="{% url 'home-module' module.code module.id %}" class="breadcrumb">{{ 'Morpheus '|upper }}{{ module.intitule|upper }}</a>
-                        <a style="color: #686868;" href="#" class="disabled breadcrumb">{{ "AJOUT D'UN TITRE" }}</a>
+                        <a style="color: #686868;" class="disabled breadcrumb">{{ "AJOUT D'UN TITRE" }}</a>
                 {% endblock %}
             {% endblock %}
             <h4><b style="color: #2a4e7f;"> {{ "NOUVEAU TITRE" }}</b></h4>
@@ -43,6 +43,13 @@
                         <label class="blue-text text-darken-4" for="{{ form.position.id_for_label }}">Position *</label>
                         <div class="input-field">
                             {{ form.position }}
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="blue-text text-darken-4" for="{{ form.description.id_for_label }}">Description *</label>
+                        <div class="input-field">
+                            {{ form.description }}
 
                         </div>
                     </div>

@@ -5,11 +5,37 @@ from datetime import datetime
 from django.utils.datastructures import MultiValueDictKeyError
 from django.utils import timezone
 from django.shortcuts import render, redirect
-from django.shortcuts import render
-from .forms import ModuleForm, TitreForm, ParagrapheForm
-from .models import Module, Titre, SousTitre, Paragraphe, Image
+from django.contrib.auth import logout
+from django.urls import reverse
+from .forms import ModuleForm, TitreForm, SousTitreForm, ParagrapheForm, ConnexionForm
+from .models import Module, Titre, SousTitre, Paragraphe
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+def connexion(resquest):
+    form = ConnexionForm(resquest.POST)
+    error = False
+
+    if resquest.method == "POST":
+        form = ConnexionForm(resquest.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            user = authenticate(username=username, password=password)
+            if user:
+                login(resquest, user)
+                modules = Module.objects.all()
+                return render(resquest, 'base.html', locals())
+            else:
+                error = True
+    else:
+        form = ConnexionForm()
+    return render(resquest, 'connexion.html',locals())
+
+def deconnexion(request):
+    logout(request)
+    return redirect(reverse(connexion))
 
 def home(resquest):
     modules = Module.objects.all()
@@ -36,38 +62,58 @@ def detail_of_title(resquest, id_titre = None):
 
     s_titre = SousTitre.objects.filter(titre=title)
     paragraphe_by_subtitle = []
-    paragraphe_image = []
-    GLOBAL_DETAILS_TITLE = []
+    #paragraphe_image = []
+    #GLOBAL_DETAILS_TITLE = []
 
     for subtitle in s_titre:
         paragraphe_by_subtitle.append([subtitle.intitule,Paragraphe.objects.filter(soustitre=subtitle), subtitle.id])
 
-    for elt in paragraphe_by_subtitle:
-        for e in elt[1]:
-            img = Image.objects.filter(paragraphe=e)
-            if img:
-                GLOBAL_DETAILS_TITLE.append([elt[0], [e, [img]],elt[2]])
-            else:
-                GLOBAL_DETAILS_TITLE.append([elt[0], [e, []],elt[2]])
+    #for elt in paragraphe_by_subtitle:
+    #    for e in elt[1]:
+    #        img = Image.objects.filter(paragraphe=e)
+    #        if img:
+    #            GLOBAL_DETAILS_TITLE.append([elt[0], [e, [img]],elt[2]])
+    #        else:
+    #            GLOBAL_DETAILS_TITLE.append([elt[0], [e, []],elt[2]])
 
     context = {
         'title':title,
         'next_title':next_title,
         'prev_title':prev_title,
         's_titre':s_titre,
-        'GLOBAL_DETAILS_TITLE':GLOBAL_DETAILS_TITLE
+        'paragraphe_by_subtitle': paragraphe_by_subtitle
+        #'GLOBAL_DETAILS_TITLE':GLOBAL_DETAILS_TITLE
     }
     return render(resquest, 'details-of-title.html', context)
 
-def add_paragraph(resquest, id_sous_titre = None):
+@login_required()
+def add_paragraph(resquest, id_sous_titre):
     sous_titre = SousTitre.objects.get(id = id_sous_titre)
-    form_paragrah = ParagrapheForm(resquest.POST or None)
+    form = ParagrapheForm(resquest.POST or None)
     if resquest.method == 'POST':
-        if form_paragrah.is_valid():
-            form_paragrah.soustitre = sous_titre
-            form_paragrah.save()
-    return render(resquest, 'add-paragraphe.html', locals())
+        CONTENU = resquest.POST['contenu']
+        try:
+            IMG = resquest.FILES['img']
+        except MultiValueDictKeyError:
+            IMG = None
+        INTITULE_IMG = resquest.POST['intitule_img']
+        DATE_CREATION = timezone.now()
+        DATE_EDITION = timezone.now()
 
+        paragraphe = Paragraphe(
+            contenu= CONTENU,
+            img= IMG,
+            intitule_img= INTITULE_IMG,
+            date_creation= DATE_CREATION,
+            date_edition= DATE_EDITION,
+            soustitre= sous_titre
+        )
+        paragraphe.save()
+        return redirect(detail_of_title,id_titre =sous_titre.titre.id)
+    else:
+        return render(resquest, 'add-paragraphe.html', locals())
+
+@login_required()
 def add_module(resquest, err=''):
     form = ModuleForm(resquest.POST or None)
     if resquest.method == 'POST':
@@ -105,6 +151,7 @@ def add_module(resquest, err=''):
     else:
         return render(resquest, 'add-module.html', locals())
 
+@login_required()
 def edit_module(resquest, id):
     try:
         module = Module.objects.get(id=id)
@@ -133,6 +180,7 @@ def edit_module(resquest, id):
         form = ModuleForm(instance=module)
         return render(resquest, 'modules/edit-module.html', locals())
 
+@login_required()
 def delete_module(resquest, id):
     try:
         module = Module.objects.get(id=id)
@@ -144,6 +192,7 @@ def delete_module(resquest, id):
     else:
         return render(resquest, 'modules/delete-module.html', locals())
 
+@login_required()
 def add_titre(resquest, id_module, err=''):
     try:
         module = Module.objects.get(id=id_module)
@@ -152,12 +201,14 @@ def add_titre(resquest, id_module, err=''):
             CODE = resquest.POST['code']
             INTITULE = resquest.POST['intitule']
             POSITION = resquest.POST['position']
+            DESCRIPTION = resquest.POST['description']
             DATE_CREATION = timezone.now()
             DATE_EDITION = timezone.now()
             titre = Titre(
                 code=CODE,
                 intitule=INTITULE,
                 position=POSITION,
+                description=DESCRIPTION,
                 module=module,
                 date_creation=DATE_CREATION,
                 date_edition=DATE_EDITION
@@ -179,92 +230,145 @@ def add_titre(resquest, id_module, err=''):
     except Module.DoesNotExist:
         module
 
+@login_required()
 def edit_titre(resquest, id_titre):
     try:
         title = Titre.objects.get(id=id_titre)
-        form = TitreForm(instance=title)
-        return render(resquest, 'titres/edit-titre.html', locals())
+
+
+        if resquest.method == 'POST':
+            CODE = resquest.POST['code']
+            INTITULE = resquest.POST['intitule']
+            DESCRIPTION = resquest.POST['description']
+            POSITION = resquest.POST['position']
+            DATE_EDITION = timezone.now()
+
+            title.position = POSITION
+            title.code = CODE
+            title.intitule = INTITULE
+            title.description = DESCRIPTION
+            title.date_edition = DATE_EDITION
+            title.save()
+            return redirect(home_module, mod = title.module.code, id_module=title.module.id)
+        else:
+            form = TitreForm(instance=title)
+            return render(resquest, 'titres/edit-titre.html', locals())
+
     except Titre.DoesNotExist:
         title = None
-#Module SCOLARITE
 
-def home_sco(resquest):
-    return render(resquest, 'm-scolarite/home-doc-scolarity.html')
+@login_required()
+def delete_titre(resquest, id_titre):
+    try:
+        titre = Titre.objects.get(id=id_titre)
+        if resquest.method == 'POST':
+            code_module = titre.module.code
+            id_module = titre.module.id
+            titre.delete()
+            return redirect(home_module, mod = code_module, id_module =id_module)
+        else:
+            return render(resquest, 'titres/delete-titre.html', locals())
+    except Titre.DoesNotExist:
+        titre
 
-def sco_conf(resquest):
-    return render(resquest, 'm-scolarite/doc-sco-config.html')
+@login_required()
+def add_subtitle(resquest, id_titre):
+    try:
+        titre = Titre.objects.get(id=id_titre)
+        form = SousTitreForm(resquest.POST or None)
+        if resquest.method == 'POST':
+            INTITULE = resquest.POST['intitule']
+            POSITION = resquest.POST['position']
+            DATE_CREATION = timezone.now()
+            DATE_EDITION = timezone.now()
 
-def sco_intro(resquest):
-    return render(resquest, 'm-scolarite/doc-sco-intro.html')
+            soustitre = SousTitre(
+                intitule= INTITULE,
+                position=POSITION,
+                date_creation=DATE_CREATION,
+                date_edition=DATE_EDITION,
+                titre=titre
+            )
 
-def sco_gest_etudiant(resquest):
-    return render(resquest, 'm-scolarite/doc-sco-gest-etd.html')
+            soustitre.save()
+            return redirect(detail_of_title, id_titre=titre.id)
+        else:
+            return render(resquest, 'soustitres/add-subtitle.html', locals())
+    except Titre.DoesNotExist:
+        titre
 
-def sco_gest_paiement(resquest):
-    return render(resquest, 'm-scolarite/doc-sco-gest-pai.html')
+@login_required()
+def edit_subtitle(resquest, id):
+    try:
+        soustitre = SousTitre.objects.get(id=id)
+        if resquest.method == "POST":
+            INTITULE = resquest.POST['intitule']
+            POSITION = resquest.POST['position']
+            DATE_EDITION = timezone.now()
 
-def sco_gest_bourse_rec(resquest):
-    return render(resquest, 'm-scolarite/doc-sco-bourse-rec.html')
+            soustitre.intitule = INTITULE
+            soustitre.position = POSITION
+            soustitre.date_edition = DATE_EDITION
+            soustitre.save()
+            return redirect(detail_of_title, id_titre = soustitre.titre.id)
+        else:
+            form = SousTitreForm(instance=soustitre)
+            return render(resquest, 'soustitres/edit-subtitle.html', locals())
+    except SousTitre.DoesNotExist:
+        raise Http404
 
-def sco_gest_exm_nat(resquest):
-    return render(resquest, 'm-scolarite/doc-sco-exm-nat.html')
+@login_required()
+def delete_subtitle(resquest, id):
+    try:
+        soustitre = SousTitre.objects.get(id=id)
+        ID_TITRE = soustitre.titre.id
+        if resquest.method == "POST":
+            soustitre.delete()
+            return redirect(detail_of_title, id_titre = ID_TITRE)
+        else:
+            form = SousTitreForm(instance=soustitre)
+            return render(resquest, 'soustitres/delete-subtitle.html', locals())
+    except SousTitre.DoesNotExist:
+        raise Http404
 
-def sco_gest_moratoire(resquest):
-    return render(resquest, 'm-scolarite/doc-sco-moratoire.html')
+@login_required()
+def delete_paragraphe(resquest, id):
+    try:
+        paragraphe = Paragraphe.objects.get(id=id)
+        ID_TITRE = paragraphe.soustitre.titre.id
+        if resquest.method == "POST":
+            paragraphe.delete()
+            return redirect(detail_of_title, id_titre=ID_TITRE)
+        else:
+            form = ParagrapheForm(instance=paragraphe)
+            return render(resquest, 'paragraphe/delete-paragraphe.html', locals())
+    except Paragraphe.DoesNotExist:
+        Http404
 
-def sco_gest_etat(resquest):
-    return render(resquest, 'm-scolarite/doc-sco-etats.html')
+@login_required()
+def edit_paragraphe(resquest, id):
+    try:
+        paragraphe = Paragraphe.objects.get(id=id)
+        ID_TITRE = paragraphe.soustitre.titre.id
+        if resquest.method == "POST":
+            CONTENU = resquest.POST['contenu']
+            try:
+                IMG = resquest.FILES['img']
+            except MultiValueDictKeyError:
+                IMG = None
 
-def sco_gest_carte(resquest):
-    return render(resquest, 'm-scolarite/doc-sco-carte.html')
+            INTITULE_IMG = resquest.POST['intitule_img']
+            DATE_EDITION = timezone.now()
 
-#Module ADMISSION
+            paragraphe.contenu = CONTENU
+            paragraphe.img = IMG
+            paragraphe.intitule_img = INTITULE_IMG
+            paragraphe.date_edition = DATE_EDITION
+            paragraphe.save()
 
-def adm_home(resquest):
-    return render(resquest, 'm-admission/doc-adm-home.html')
-
-def adm_intro(resquest):
-    return render(resquest, 'm-admission/doc-adm-intro.html')
-
-def adm_config(resquest):
-    return render(resquest, 'm-admission/doc-adm-config.html')
-
-def adm_online(resquest):
-    return render(resquest, 'm-admission/doc-adm-online.html')
-
-def adm_inscand(resquest):
-    return render(resquest, 'm-admission/doc-adm-insc-cand.html')
-
-def adm_val(resquest):
-    return render(resquest, 'm-admission/doc-adm-validation.html')
-
-def adm_note(resquest):
-    return render(resquest, 'm-admission/doc-adm-note.html')
-
-def adm_valcand(resquest):
-    return render(resquest, 'm-admission/doc-adm-val-adm.html')
-
-#Module LOCATION
-
-def loc_home(resquest):
-    return render(resquest, 'm-location/doc-loc-home.html')
-
-def loc_intro(resquest):
-    return render(resquest, 'm-location/doc-loc-intro.html')
-
-def loc_config(resquest):
-    return render(resquest, 'm-location/doc-loc-config.html')
-
-def loc_locataire(resquest):
-    return render(resquest, 'm-location/doc-loc-locataire.html')
-
-def loc_contrat(resquest):
-    return render(resquest, 'm-location/doc-loc-contrat.html')
-
-def loc_paiement(resquest):
-    return render(resquest, 'm-location/doc-loc-paiement.html')
-
-#Module PAIE
-
-def pai_home(resquest):
-    return render(resquest, 'm-paie/doc-pai-home.html')
+            return redirect(detail_of_title, id_titre=ID_TITRE)
+        else:
+            form = ParagrapheForm(instance=paragraphe)
+            return render(resquest, 'paragraphe/edit-paragraphe.html', locals())
+    except Paragraphe.DoesNotExist:
+        Http404

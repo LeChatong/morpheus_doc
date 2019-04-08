@@ -15,23 +15,28 @@
                 {% block breadcrumb %}
                     <b>
                         <a style="color: #2a4e7f;" href="{% url 'morpheus_doc' %}" class="breadcrumb">{{ 'Morpheus Documentation'|upper }}</a>
-                        <a style="color: #686868;" href="#" class="disabled breadcrumb">{{ 'Morpheus '|upper }}{{ mod.intitule|upper }}</a>
+                        <a style="color: #686868;" class="disabled breadcrumb">{{ 'Morpheus '|upper }}{{ mod.intitule|upper }}</a>
                     </b>
                 {% endblock %}
                 <b><h4>{{ 'Morpheus '|upper }}{{ mod.intitule|upper }}</h4></b><hr>
-                <a title="Nouveau Titre" class="green-text text-darken-1" href="{% url 'add-titre' mod.id %}">NOUVEAU TITRE<i class="material-icons left">add_circle</i></a>
+                {% if user.is_authenticated %}
+                    <a title="Nouveau Titre" class="green-text text-darken-1" href="{% url 'add-titre' mod.id %}">NOUVEAU TITRE<i class="material-icons left">add_circle</i></a>
+                {% endif %}
+
                 <div class="row">
                     {% if titres.values_list.exists %}
                         <table class="highlight">
                             {% for titre in titres %}
                                 <tr>
                                     <td><h5><a style="color: #2A4E7F;" class="waves-effect text-darken-3" href="{% url 'detail-titre' titre.id %}">{{ titre.intitule|upper }}</a></h5></td>
-                                    <td>
-                                        <a href="{% url 'edit-titre' titre.id %}" class="yellow-text text-darken-4">EDITER<i class="material-icons left">edit</i></a>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="red-text text-darken-4">SUPPRIMER<i class="material-icons left">delete</i></a>
-                                    </td>
+                                    {% if user.is_authenticated %}
+                                        <td>
+                                            <a href="{% url 'edit-titre' titre.id %}" class="yellow-text text-darken-4">EDITER<i class="material-icons left">edit</i></a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'delete-titre' titre.id %}" class="red-text text-darken-4">SUPPRIMER<i class="material-icons left">delete</i></a>
+                                        </td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
                         </table>

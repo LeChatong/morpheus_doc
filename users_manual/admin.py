@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.text import Truncator
-from .models import Module, Titre, SousTitre, Paragraphe, Image
+from .models import Module, Titre, SousTitre, Paragraphe
 
 
 class ModuleAdmin(admin.ModelAdmin):
@@ -11,7 +11,7 @@ class ModuleAdmin(admin.ModelAdmin):
     ordering = ('position',)
 
 class TitreAdmin(admin.ModelAdmin):
-    list_display = ('details','mod', 'position', 'date_creation', 'date_edition')
+    list_display = ('details','mod', 'position', 'description', 'date_creation', 'date_edition')
     list_filter = ('code',)
     date_hierarchy = 'date_creation'
     search_fields = ('code', 'intitule')
@@ -39,12 +39,14 @@ class SousTitreAdmin(admin.ModelAdmin):
     list_display = ('intitule', 'position', 'date_creation', 'date_edition')
     list_filter = ('intitule',)
     date_hierarchy = 'date_creation'
+    list_per_page = 25
     search_fields = ('intitule',)
     ordering = ('position',)
 
 class ParagrapheAdmin(admin.ModelAdmin):
     list_display = ('details_paragraphe','contenu_trunc', 'date_creation', 'date_edition')
     date_hierarchy = 'date_creation'
+    list_per_page = 25
     ordering = ('date_creation',)
     def contenu_trunc(self, obj):
         return ("%s" % Truncator((obj.contenu)).chars(40, truncate='...'))
@@ -54,14 +56,9 @@ class ParagrapheAdmin(admin.ModelAdmin):
         details_paragraphe.short_description = 'Détails'
     contenu_trunc.short_description = 'Contenu'
 
-class ImageAdmin(admin.ModelAdmin):
-    list_display = ('intitule', 'photo', 'date_creation', 'date_edition')
-    search_fields = ('intitule',)
-    date_hierarchy = 'date_creation'
-    ordering = ('date_creation',)
 # Register your models here.
+
 admin.site.register(Module, ModuleAdmin)
 admin.site.register(Titre, TitreAdmin)
 admin.site.register(SousTitre, SousTitreAdmin)
 admin.site.register(Paragraphe, ParagrapheAdmin)
-admin.site.register(Image, ImageAdmin)

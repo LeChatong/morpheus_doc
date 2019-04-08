@@ -17,19 +17,27 @@
             <h4><b style="color: #2a4e7f;"> {{ "NOUVEAU PARAGRAPHE" }}</b></h4>
             <hr/>
             <div class="row">
-                <form class="blue-text text-darken-4 col s10" action="{% url 'add_paragraph' sous_titre.id %}" method="post">
+                <form enctype="multipart/form-data" class="blue-text text-darken-4 col s10" action="{% url 'add_paragraph' sous_titre.id %}" method="post">
                     {% csrf_token %}
                     <div class="row">
-                        <label class="blue-text text-darken-4" for="{{ form_paragrah.contenu.id_for_label }}"><h5>Paragraphe *</h5></label>
+                        <label  style="color: #2a4e7f;" class="text-darken-4" for="{{ form.contenu.id_for_label }}"><h5>Paragraphe</h5></label>
                         <div class="input-field">
-                            <!--<input class="blue-text text-darken-4" id="nomUtilisateur" type="text" name="nomUtilisateur">-->
-                            {{ form_paragrah.contenu }}
-
+                            {{ form.contenu }}
+                        </div>
+                        <hr/>
+                        <h5>Image</h5>
+                        <label  style="color: #2a4e7f;" class="text-darken-4" for="{{ form.img.id_for_label }}">Choisissez un Image</label>
+                        <div class="input-field">
+                            {{ form.img }}
+                        </div>
+                        <label  style="color: #2a4e7f;" class="text-darken-4" for="{{ form.intitule_img.id_for_label }}">Intitule de l'image</label>
+                        <div class="input-field">
+                            {{ form.intitule_img }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field">
-                            <button class="btn waves-effect blue darken-4 white-text" type="submit">Enregistrer <i class="material-icons right">send</i></button>
+                            <button  style="color: #2a4e7f;" class="btn waves-effect darken-4 white-text" type="submit">Enregistrer <i class="material-icons right">send</i></button>
                         </div>
                     </div>
                 </form>
