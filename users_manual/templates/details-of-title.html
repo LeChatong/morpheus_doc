@@ -130,11 +130,11 @@
                 <div class="row">
                     <b>
                         <div class="col s4">
-                            {% if prev_title %}<a href="{% url 'detail-titre' prev_title.id %}">{{ prev_title.intitule|upper }}</a> {% endif %}
+                            {% if prev_title %}<a style="color: #2a4e7f;" href="{% url 'detail-titre' prev_title.id %}">{{ prev_title.intitule|upper }}</a> {% endif %}
                         </div>
                         <div class="col s4"><a style="color: rgba(104,104,104,0.62);" class="disabled" href="#">{{ title.intitule|upper }}</a> </div>
                         <div class="col s4">
-                            {% if next_title %}<a href="{% url 'detail-titre' next_title.id %}">{{ next_title.intitule|upper }}</a> {% endif %}
+                            {% if next_title %}<a style="color: #2a4e7f;" href="{% url 'detail-titre' next_title.id %}">{{ next_title.intitule|upper }}</a> {% endif %}
                         </div>
                     </b>
 
